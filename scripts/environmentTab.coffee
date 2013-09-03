@@ -47,7 +47,7 @@ class EnvironmentTab extends ReportTab
     for q, i in quantiles
       if parseFloat(data[q]) > parseFloat(data.SCORE) or i is quantiles.length - 1
         max_q = quantiles[i]
-        min_q = quantiles[i - 1]
+        min_q = quantiles[i - 1] or "Q0" # quantiles[i]
         break
     @$('.scenarioResults').html """
       The average Marxan score for this zone is #{data.SCORE}, placing it in 
