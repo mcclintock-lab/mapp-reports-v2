@@ -14,6 +14,9 @@ class EnvironmentTab extends ReportTab
   timeout: 60000
 
   render: () ->
+    zoneType = _.find @model.getAttributes(), (attr) -> 
+      attr.exportid is 'ZONE_TYPE'
+    zoneType = zoneType?.value or 'smz'
     # setup context object with data and render the template from it
     context =
       sketch: @model.forTemplate()
@@ -26,11 +29,11 @@ class EnvironmentTab extends ReportTab
         "ExistingMarineProtectedAreas").toArray()
       importantAreas: @recordSet("OverlapWithImpAreas", 
         "ProvincialTenures").toArray()
-      marxan: JSON.stringify(
-        @recordSet("MarxanAnalysis", "MarxanAnalysis").toArray(), null, ' ')
       marxanAnalyses: _.map(@recordSet("MarxanAnalysis", "MarxanAnalysis")
         .toArray(), (f) -> f.NAME)
-    
+      smz: zoneType is 'smz'
+      pmz: zoneType is 'pmz'
+
     @$el.html @template.render(context, templates)
     @enableTablePaging()
     @enableLayerTogglers()
@@ -54,6 +57,8 @@ class EnvironmentTab extends ReportTab
       the #{min_q.replace('Q', '')}% - #{max_q.replace('Q', '')}% quantile 
       range for this sub-region.
     """
+
+    @$('.scenarioDescription').html data.MARX_DESC
 
     domain = _.map quantiles, (q) -> data[q]
     domain.push 100
