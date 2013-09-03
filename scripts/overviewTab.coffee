@@ -1,5 +1,9 @@
 ReportTab = require 'reportTab'
 templates = require '../templates/templates.js'
+_partials = require '../node_modules/seasketch-reporting-api/templates/templates.js'
+partials = []
+for key, val of _partials
+  partials[key.replace('node_modules/seasketch-reporting-api/', '')] = val
 
 class OverviewTab extends ReportTab
   name: 'Overview'
@@ -14,6 +18,9 @@ class OverviewTab extends ReportTab
   timeout: 30000
 
   render: () ->
+    zoneType = _.find @model.getAttributes(), (attr) -> 
+      attr.exportid is 'ZONE_TYPE'
+    zoneType = zoneType?.value or 'smz'
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -26,8 +33,10 @@ class OverviewTab extends ReportTab
         "DistanceToTransmissionLines").float('DistInKM', 2)
       infrastructure: @recordSet("DistanceToInfrastructure", 
         "DistanceToInfrastructure").toArray()
+      smz: zoneType is 'smz'
+      pmz: zoneType is 'pmz'
 
-    @$el.html @template.render(context, templates)
+    @$el.html @template.render(context, partials)
     @enableLayerTogglers()
 
 module.exports = OverviewTab
