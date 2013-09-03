@@ -1,0 +1,53 @@
+<div class="reportSection">
+  <h4>Size</h4>
+  <p class="large">
+    This zone adds <strong>{{size}} square kilometers</strong> to be managed
+    for protection.
+  </p>
+</div>
+
+{{#adjacentProtectedArea}}
+<div class="reportSection">
+  <h4>Nearby Areas</h4>
+  <p class="large green-check">
+    This protected area is adjacent to a <strong>Terrestrial Protected Area</strong>.
+  </p>
+</div>
+{{/adjacentProtectedArea}}
+
+<div class="reportSection">
+  <h4>Transmission Lines <a href="#" data-toggle-node="51f6ad677bbb9b2457020f52" data-visible="false">show layer</a></h4>
+  <p class="large">
+    This zone is {{transmissionLines}} km from the nearest transmission lines.
+  </p>
+</div>
+
+<div class="reportSection tableContainer">
+  <h4>Distance to Infrastructure</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Infrastructure</th>
+        <th>Distance (km)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#infrastructure}}
+      <tr>
+        <td>{{Name}}</td>
+        <td>{{DistInKM}}</td>
+      </tr>
+      {{/infrastructure}}
+    </tbody>
+  </table>
+  <!-- <a href="#" data-toggle-node="51f5545c08dc4f5f2d216146" data-visible="false">show habitats layer</a> -->
+</div>
+
+
+{{#attributes}}
+<div class="reportSection">
+  <h4>{{sketchClass.name}} Attributes</h4>
+    {{>attributes/attributesTable}}
+  </table>
+</div>
+{{/attributes}}

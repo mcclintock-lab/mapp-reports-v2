@@ -1,11 +1,23 @@
 @import '../node_modules/seasketch-reporting-api/stylesheets/common.less';
 
-.reportView .demo {
-  .axis {
-    path, line {
-      fill: none;
-      stroke: #000;
-      shape-rendering: crispEdges;
+.environment .viz {
+  position:relative;
+  margin-left: 20px;
+  margin-top: 20px;
+  p {
+    padding-top:35px !important;
+    width:100%;
+    text-align:center;
+  }
+
+  div.score {
+    position:absolute;
+    &:before {
+      content:'▼';
+      left:-10px;
+      top:-17px;
+      font-size:18px;
+      position:relative;
     }
   }
 }

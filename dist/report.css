@@ -289,9 +289,23 @@
 .reportView .reportSection.tableContainer td {
   border: 1px solid #e6e6e6;
 }
-.reportView .demo .axis path,
-.reportView .demo .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+.environment .viz {
+  position: relative;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.environment .viz p {
+  padding-top: 35px !important;
+  width: 100%;
+  text-align: center;
+}
+.environment .viz div.score {
+  position: absolute;
+}
+.environment .viz div.score:before {
+  content: '▼';
+  left: -10px;
+  top: -17px;
+  font-size: 18px;
+  position: relative;
 }
