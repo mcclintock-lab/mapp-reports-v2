@@ -309,3 +309,36 @@
   font-size: 18px;
   position: relative;
 }
+.environment .viz svg {
+  font: 10px sans-serif;
+}
+.environment .viz .axis path,
+.environment .viz .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.environment .viz .bar {
+  fill: steelblue;
+}
+.environment .viz .x.axis path {
+  display: none;
+}
+.environment .viz .score {
+  font-size: 16px;
+}
+.environment .viz .legends {
+  margin-top: 5px;
+  margin-left: 40px;
+}
+.environment .viz .legend {
+  margin-right: 10px;
+  float: left;
+  font-size: 10px;
+}
+.environment .viz .legend span {
+  margin: 0px 3px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+}
