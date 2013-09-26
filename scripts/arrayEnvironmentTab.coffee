@@ -1,10 +1,10 @@
 ReportTab = require 'reportTab'
 templates = require '../templates/templates.js'
 
-class EnvironmentTab extends ReportTab
+class ArrayEnvironmentTab extends ReportTab
   name: 'Environment'
   className: 'environment'
-  template: templates.environment
+  template: templates.arrayEnvironment
   dependencies: [
     'Habitat'
     'ExistingMarineProtectedAreas'
@@ -14,16 +14,16 @@ class EnvironmentTab extends ReportTab
   timeout: 120000
 
   render: () ->
-    zoneType = _.find @model.getAttributes(), (attr) -> 
-      attr.exportid is 'ZONE_TYPE'
-    zoneType = zoneType?.value or 'smz'
     # setup context object with data and render the template from it
+    console.log @recordSet('Habitat', 'ImportantAreas').toArray()
+    console.log @recordSet('ExistingMarineProtectedAreas', "ExistingMarineProtectedAreas").toArray()
+    console.log @recordSet("OverlapWithImpAreas", "ProvincialTenures").toArray()
+    console.log @recordSet("MarxanAnalysis", "MarxanAnalysis").toArray()
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
       attributes: @model.getAttributes()
       admin: @project.isAdmin window.user
-      result: JSON.stringify(@results.get('data'), null, '  ')
       habitats: @recordSet('Habitat', 'ImportantAreas').toArray()
       existingMPAs: @recordSet('ExistingMarineProtectedAreas', 
         "ExistingMarineProtectedAreas").toArray()
@@ -31,8 +31,6 @@ class EnvironmentTab extends ReportTab
         "ProvincialTenures").toArray()
       marxanAnalyses: _.map(@recordSet("MarxanAnalysis", "MarxanAnalysis")
         .toArray(), (f) -> f.NAME)
-      smz: zoneType is 'smz'
-      pmz: zoneType is 'pmz'
 
     @$el.html @template.render(context, templates)
     @enableTablePaging()
@@ -57,12 +55,12 @@ class EnvironmentTab extends ReportTab
         min_q = quantiles[i - 1] or "Q0" # quantiles[i]
         break
     @$('.scenarioResults').html """
-      The average Marxan score for this zone is <strong>#{data.SCORE}</strong>, placing it in 
+      The average Marxan score for this zones within this proposal is <strong>#{data.SCORE}</strong>, placing it in 
       the <strong>#{min_q.replace('Q', '')}% - #{max_q.replace('Q', '')}% quantile 
       range</strong> for this sub-region.
     """
 
-    @$('.scenarioDescription').html data.MARX_DESC
+    @$('.scenarioDescription').html data.MARX_DESC.replace('this zone ', 'zones within this proposal ')
 
     domain = _.map quantiles, (q) -> data[q]
     domain.push 100
@@ -175,4 +173,6 @@ class EnvironmentTab extends ReportTab
         """
       @$('.viz').append '<br style="clear:both;">'
 
-module.exports = EnvironmentTab
+      @$('')
+
+module.exports = ArrayEnvironmentTab

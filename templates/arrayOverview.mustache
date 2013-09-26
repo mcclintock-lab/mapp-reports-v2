@@ -1,0 +1,34 @@
+<div class="reportSection">
+  <h4>Size</h4>
+  <p class="large">
+    This regional proposal contains {{numChildren}} zones and covers a total of <strong>{{size}} square kilometers</strong>.
+  </p>
+  <div class="tocContainer"></div>
+</div>
+
+{{#adjacentProtectedArea}}
+<div class="reportSection">
+  <h4>Nearby Areas</h4>
+  <p class="large green-check">
+    Zones within this proposal are adjacent to a <strong>Terrestrial Protected Area</strong>.
+  </p>
+  <p>
+    Build on past and existing zoning efforts that are consistent with an ecosystem-based management approach.  Wherever possible, do not duplicate existing zoning efforts and consider existing terrestrial zoning for adjacent marine zoning to achieve zoning objectives.
+  </p>
+</div>
+{{/adjacentProtectedArea}}
+
+<div class="reportSection">
+  <h4>Transmission Lines <a href="#" data-toggle-node="51f6ad677bbb9b2457020f52" data-visible="false">show layer</a></h4>
+  <p class="large">
+    This zone is {{transmissionLines}} km from the nearest transmission lines.
+  </p>
+</div>
+
+{{#attributes}}
+<div class="reportSection">
+  <h4>{{sketchClass.name}} Attributes</h4>
+    {{>attributes/attributesTable}}
+  </table>
+</div>
+{{/attributes}}

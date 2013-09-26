@@ -55,6 +55,9 @@ module.exports = (grunt) ->
       report:
         src: 'scripts/report.coffee'
         dest: 'dist/report.js'
+      arrayReport:
+        src: 'scripts/arrayReport.coffee'
+        dest: 'dist/arrayReport.js'
       options:
         transform: ['coffeeify']
         debug: true

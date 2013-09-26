@@ -1,7 +1,7 @@
 <div class="reportSection">
   <h4>Size</h4>
   <p class="large">
-    This zone is <strong>{{size}} square kilometers</strong>.
+    This zone is <strong>{{size}} square kilometers</strong>. Size is used to quantify draft spatial zones and provide percent coverage. 
   </p>
 </div>
 
@@ -10,6 +10,9 @@
   <h4>Nearby Areas</h4>
   <p class="large green-check">
     This zone is adjacent to a <strong>Terrestrial Protected Area</strong>.
+  </p>
+  <p>
+    Build on past and existing zoning efforts that are consistent with an ecosystem-based management approach.  Wherever possible, do not duplicate existing zoning efforts and consider existing terrestrial zoning for adjacent marine zoning to achieve zoning objectives.
   </p>
 </div>
 {{/adjacentProtectedArea}}
@@ -39,16 +42,23 @@
       </tr>
       {{/infrastructure}}
     </tbody>
+    <tfoot>
+      <tr>
+      <td colspan="2" class="paragraph">
+      The horizontal distance to ferries, ports, harbours, fuel docks, and other marine and coastal infrastructure might be helpful for planning marine uses and activities that are supported in this zone. 
+      </td>
+      </tr>
+    </tfoot>
   </table>
   <!-- <a href="#" data-toggle-node="51f5545c08dc4f5f2d216146" data-visible="false">show habitats layer</a> -->
 </div>
 {{/pmz}}
 
 
-{{#attributes}}
+{{#anyAttributes}}
 <div class="reportSection">
   <h4>{{sketchClass.name}} Attributes</h4>
     {{>attributes/attributesTable}}
   </table>
 </div>
-{{/attributes}}
+{{/anyAttributes}}

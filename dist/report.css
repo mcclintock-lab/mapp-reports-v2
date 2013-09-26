@@ -286,6 +286,9 @@
   line-height: 16px;
   padding: 5px 10px;
 }
+.reportView .reportSection.tableContainer table tfoot td.paragraph {
+  text-align: left;
+}
 .reportView .reportSection.tableContainer td {
   border: 1px solid #e6e6e6;
 }
@@ -341,4 +344,13 @@
   display: inline-block;
   width: 10px;
   height: 10px;
+}
+.overview .tocContainer {
+  padding-left: 20px;
+}
+.overview .tocContainer .expander {
+  display: none !important;
+}
+.overview .tocContainer .tableOfContentsItem[data-type=sketch-collection] .children {
+  display: block !important;
 }
