@@ -152,6 +152,9 @@
   color: white;
   background: #718ea5;
 }
+.reportView .tocContainer {
+  padding: 10px;
+}
 .reportView .reportSection {
   *zoom: 1;
   margin-bottom: 20px;
@@ -286,11 +289,11 @@
   line-height: 16px;
   padding: 5px 10px;
 }
-.reportView .reportSection.tableContainer table tfoot td.paragraph {
-  text-align: left;
-}
 .reportView .reportSection.tableContainer td {
   border: 1px solid #e6e6e6;
+}
+.reportView .reportSection.tableContainer p {
+  padding: 10px;
 }
 .environment .viz {
   position: relative;

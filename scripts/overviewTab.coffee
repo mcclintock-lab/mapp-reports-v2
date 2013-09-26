@@ -12,8 +12,8 @@ class OverviewTab extends ReportTab
   dependencies: [
     'ZoneSize'
     'TerrestrialProtectedAreas'
-    # 'DistanceToInfrastructure'
-    # 'DistanceToTransmissionLines'
+    'DistanceToInfrastructure'
+    'DistanceToTransmissionLines'
   ]
   timeout: 120000
 
@@ -30,10 +30,10 @@ class OverviewTab extends ReportTab
       size: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
       adjacentProtectedArea: @recordSet('TerrestrialProtectedAreas', 
         'TerrestrialProtectedAreas').bool('Result')
-      # transmissionLines: @recordSet("DistanceToTransmissionLines", 
-      #   "DistanceToTransmissionLines").float('DistInKM', 2)
-      # infrastructure: @recordSet("DistanceToInfrastructure", 
-      #   "DistanceToInfrastructure").toArray()
+      transmissionLines: @recordSet("DistanceToTransmissionLines", 
+        "DistanceToTransmissionLines").float('DistInKM', 2)
+      infrastructure: @recordSet("DistanceToInfrastructure", 
+        "DistanceToInfrastructure").toArray()
       smz: zoneType is 'smz'
       pmz: zoneType is 'pmz'
 
