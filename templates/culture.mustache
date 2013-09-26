@@ -1,11 +1,28 @@
 <div class="reportSection {{#overlap}}emphasis{{/overlap}}">
-  <h4>Overlap with Historical or Archeological Sites</h4>
+  <h4>Cultural Uses<!-- Overlap with Historical or Archeological Sites --></h4>
   <p>
+    {{#smz}}
+    First Nations traditional uses continue in the Special Management Zone in accordance with
+    legal obligations and government policies, including practices for food, social, and ceremonial
+    fisheries.
+    {{/smz}}
+    {{#pmz}}
+    First Nations traditional uses continue in the Protection Management Zone in accordance with
+    legal obligations and government policies, including practices for food, social, and ceremonial
+    fisheries.
+    {{/pmz}}
+    {{#array}}
+    First Nations traditional uses continue in zones within this proposal in accordance with
+    legal obligations and government policies, including practices for food, social, and ceremonial
+    fisheries.
+    {{/array}}
+  </p>
+<!--   <p>
     {{#overlap}}
     This zone overlaps with sensitive historical or archeological areas.
     {{/overlap}}
     {{^overlap}}
     This zone </strong>does not</strong> overlap with any sensitive historical or archeological areas.
     {{/overlap}}
-  </p>
+  </p> -->
 </div>
