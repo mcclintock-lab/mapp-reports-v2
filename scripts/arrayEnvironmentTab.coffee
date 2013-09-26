@@ -11,7 +11,7 @@ class ArrayEnvironmentTab extends ReportTab
     'OverlapWithImpAreas'
     'MarxanAnalysis'
   ]
-  timeout: 120000
+  timeout: 600000
 
   render: () ->
     # setup context object with data and render the template from it

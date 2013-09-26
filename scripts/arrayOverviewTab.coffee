@@ -14,7 +14,7 @@ class ArrayOverviewTab extends ReportTab
     'TerrestrialProtectedAreas'
     # 'DistanceToTransmissionLines'
   ]
-  timeout: 120000
+  timeout: 600000
 
   render: () ->
     # console.log @recordSet("DistanceToTransmissionLines", "DistanceToTransmissionLines")

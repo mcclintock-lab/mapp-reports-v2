@@ -9,7 +9,7 @@ class EconomicTab extends ReportTab
     "Closures"
     "OverlapWithExistingProvincialTenures"
   ]
-  timeout: 120000
+  timeout: 600000
 
   render: () ->
     zoneType = _.find @model.getAttributes(), (attr) -> 
