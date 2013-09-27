@@ -11,7 +11,7 @@ class ArrayOverviewTab extends ReportTab
   template: templates.arrayOverview
   dependencies: [
     'ZoneSize'
-    'TerrestrialProtectedAreas'
+    # 'TerrestrialProtectedAreas'
     # 'DistanceToTransmissionLines'
   ]
   timeout: 600000
@@ -25,8 +25,8 @@ class ArrayOverviewTab extends ReportTab
       admin: @project.isAdmin window.user
       size: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
       numChildren: @children.length
-      adjacentProtectedArea: @recordSet('TerrestrialProtectedAreas', 
-        'TerrestrialProtectedAreas').bool('Result')[0]
+      # adjacentProtectedArea: @recordSet('TerrestrialProtectedAreas', 
+      #   'TerrestrialProtectedAreas').bool('Result')[0]
       # transmissionLines: @recordSet("DistanceToTransmissionLines", 
       #   "DistanceToTransmissionLines").float('DistInKM', 2)
       # infrastructure: @recordSet("DistanceToInfrastructure", 
