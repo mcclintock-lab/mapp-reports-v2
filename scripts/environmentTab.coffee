@@ -2,7 +2,7 @@ ReportTab = require 'reportTab'
 templates = require '../templates/templates.js'
 
 class EnvironmentTab extends ReportTab
-  name: 'Environment'
+  name: 'Ecological Integrity'
   className: 'environment'
   template: templates.environment
   dependencies: [
@@ -23,7 +23,7 @@ class EnvironmentTab extends ReportTab
       sketchClass: @sketchClass.forTemplate()
       attributes: @model.getAttributes()
       admin: @project.isAdmin window.user
-      result: JSON.stringify(@results.get('data'), null, '  ')
+      # result: JSON.stringify(@results.get('data'), null, '  ')
       habitats: @recordSet('Habitat', 'ImportantAreas').toArray()
       existingMPAs: @recordSet('ExistingMarineProtectedAreas', 
         "ExistingMarineProtectedAreas").toArray()

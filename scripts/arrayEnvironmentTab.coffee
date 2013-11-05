@@ -2,7 +2,7 @@ ReportTab = require 'reportTab'
 templates = require '../templates/templates.js'
 
 class ArrayEnvironmentTab extends ReportTab
-  name: 'Environment'
+  name: 'Ecological Integrity'
   className: 'environment'
   template: templates.arrayEnvironment
   dependencies: [
@@ -15,10 +15,6 @@ class ArrayEnvironmentTab extends ReportTab
 
   render: () ->
     # setup context object with data and render the template from it
-    console.log @recordSet('Habitat', 'ImportantAreas').toArray()
-    console.log @recordSet('ExistingMarineProtectedAreas', "ExistingMarineProtectedAreas").toArray()
-    console.log @recordSet("OverlapWithImpAreas", "ProvincialTenures").toArray()
-    console.log @recordSet("MarxanAnalysis", "MarxanAnalysis").toArray()
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()

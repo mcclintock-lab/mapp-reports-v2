@@ -2,7 +2,7 @@ ReportTab = require 'reportTab'
 templates = require '../templates/templates.js'
 
 class CultureTab extends ReportTab
-  name: 'Culture'
+  name: 'Governance'
   className: 'culture'
   template: templates.culture
   # dependencies: ['ArchSiteOverlap']

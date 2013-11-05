@@ -2,7 +2,7 @@ ReportTab = require 'reportTab'
 templates = require '../templates/templates.js'
 
 class ArrayEconomicTab extends ReportTab
-  name: 'Economy'
+  name: 'Human Well-Being'
   className: 'economic'
   template: templates.economic
   dependencies: [
