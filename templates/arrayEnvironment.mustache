@@ -101,3 +101,44 @@
     MaPP consulted the MaPP Science Advisory Committee (SAC) for advice on scenarios and target selection.  The SAC supported the decision to use the percentage target categories established by the BCMCA project team in 2006. Please see this <a href="https://dl.dropboxusercontent.com/u/1764986/BCMCA-Marxan for MaPP-Report on initial scenarios_27Feb2013.pdf" target="_blank">2013 BCMCA report</a> for more information about the MaPP-BCMCA project and Marxan scenarios, and consult the <a href="http://bcmca.ca" target="_blank">BCMCA Atlas</a> for detailed information about targets, species, and habitats.
   </p>
 </div>
+
+<div class="reportSection tableContainer">
+  <h4>Overlap with Non Fish Breeding Areas</h4>
+  <table  data-paging="10" data-no-rows="Does not overlap any Non Fish Breeding Areas">
+    <thead>
+      <tr>
+        <th>Species</th>
+        <th>Number of Breeding Areas or Nesting Sites</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#nonFishBreedingAreas}}
+      <tr>
+        <td>{{SPECIES}}</td>
+        <td>{{COUNT}}</td>
+      </tr>
+      {{/nonFishBreedingAreas}}
+    </tbody>
+  </table>
+</div>
+<div class="reportSection tableContainer">
+  <h4>Overlap with Marine Classifications</h4>
+  <table  data-paging="10" data-no-rows="Does not overlap any Marine Classifications">
+    <thead>
+      <tr>
+        <th>Classification</th>
+        <th>Overlap (km²)</th>
+        <th>Overlap %</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#marineClassifications}}
+      <tr>
+        <td>{{HAB_NAME}}</td>
+        <td>{{CLPD_AREA}}</td>
+        <td>{{PERC_AREA}}</td>
+      </tr>
+      {{/marineClassifications}}
+    </tbody>
+  </table>
+</div>

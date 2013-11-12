@@ -6,9 +6,11 @@ class EnvironmentTab extends ReportTab
   className: 'environment'
   template: templates.environment
   dependencies: [
-    'Habitat'
+    'OverlapWithImportantAreas'
+    'OverlapWithBiogenicAndCommunityFormingSpecies'
+    'OverlapWithNonFishBreedingAreas'
+    'OverlapWithMarineClassifications'
     'ExistingMarineProtectedAreas'
-    'OverlapWithImpAreas'
     'MarxanAnalysis'
   ]
   timeout: 600000
@@ -24,11 +26,16 @@ class EnvironmentTab extends ReportTab
       attributes: @model.getAttributes()
       admin: @project.isAdmin window.user
       # result: JSON.stringify(@results.get('data'), null, '  ')
-      habitats: @recordSet('Habitat', 'ImportantAreas').toArray()
+      
+      nonFishBreedingAreas: @recordSet('OverlapWithNonFishBreedingAreas', 'OverlapWithNonFishBreedingAreas').toArray()
+      habitats: @recordSet('OverlapWithBiogenicAndCommunityFormingSpecies', 'OverlapWithBiogenicAndCommunityFormingSpecies').toArray()
+      importantAreas: @recordSet("OverlapWithImportantAreas", 
+        "OverlapWithImportantAreas").toArray()
+      marineClassifications: @recordSet('OverlapWithMarineClassifications', 'OverlapWithMarineClassifications').toArray()
+
       existingMPAs: @recordSet('ExistingMarineProtectedAreas', 
         "ExistingMarineProtectedAreas").toArray()
-      importantAreas: @recordSet("OverlapWithImpAreas", 
-        "ProvincialTenures").toArray()
+
       marxanAnalyses: _.map(@recordSet("MarxanAnalysis", "MarxanAnalysis")
         .toArray(), (f) -> f.NAME)
       smz: zoneType is 'smz'

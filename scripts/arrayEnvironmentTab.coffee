@@ -6,9 +6,11 @@ class ArrayEnvironmentTab extends ReportTab
   className: 'environment'
   template: templates.arrayEnvironment
   dependencies: [
-    'Habitat'
+    'OverlapWithImportantAreas'
+    'OverlapWithBiogenicAndCommunityFormingSpecies'
+    'OverlapWithNonFishBreedingAreas'
+    'OverlapWithMarineClassifications'
     'ExistingMarineProtectedAreas'
-    'OverlapWithImpAreas'
     'MarxanAnalysis'
   ]
   timeout: 600000
@@ -20,11 +22,13 @@ class ArrayEnvironmentTab extends ReportTab
       sketchClass: @sketchClass.forTemplate()
       attributes: @model.getAttributes()
       admin: @project.isAdmin window.user
-      habitats: @recordSet('Habitat', 'ImportantAreas').toArray()
+      nonFishBreedingAreas: @recordSet('OverlapWithNonFishBreedingAreas', 'OverlapWithNonFishBreedingAreas').toArray()
+      habitats: @recordSet('OverlapWithBiogenicAndCommunityFormingSpecies', 'OverlapWithBiogenicAndCommunityFormingSpecies').toArray()
+      importantAreas: @recordSet("OverlapWithImportantAreas", 
+        "OverlapWithImportantAreas").toArray()
+      marineClassifications: @recordSet('OverlapWithMarineClassifications', 'OverlapWithMarineClassifications').toArray()
       existingMPAs: @recordSet('ExistingMarineProtectedAreas', 
         "ExistingMarineProtectedAreas").toArray()
-      importantAreas: @recordSet("OverlapWithImpAreas", 
-        "ProvincialTenures").toArray()
       marxanAnalyses: _.map(@recordSet("MarxanAnalysis", "MarxanAnalysis")
         .toArray(), (f) -> f.NAME)
 
