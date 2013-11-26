@@ -10,7 +10,6 @@ class ArrayEnvironmentTab extends ReportTab
     'OverlapWithBiogenicAndCommunityFormingSpecies'
     'OverlapWithNonFishBreedingAreas'
     'OverlapWithMarineClassifications'
-    'ExistingMarineProtectedAreas'
     'MarxanAnalysis'
   ]
   timeout: 600000
@@ -27,8 +26,7 @@ class ArrayEnvironmentTab extends ReportTab
       importantAreas: @recordSet("OverlapWithImportantAreas", 
         "OverlapWithImportantAreas").toArray()
       marineClassifications: @recordSet('OverlapWithMarineClassifications', 'OverlapWithMarineClassifications').toArray()
-      existingMPAs: @recordSet('ExistingMarineProtectedAreas', 
-        "ExistingMarineProtectedAreas").toArray()
+
       marxanAnalyses: _.map(@recordSet("MarxanAnalysis", "MarxanAnalysis")
         .toArray(), (f) -> f.NAME)
 

@@ -17,42 +17,6 @@
 </div>
 {{/adjacentProtectedArea}}
 
-{{^pmz}}
-<div class="reportSection">
-  <h4>Transmission Lines <a href="#" data-toggle-node="51f6ad677bbb9b2457020f52" data-visible="false">show layer</a></h4>
-  <p class="large">
-    This zone is {{transmissionLines}} km from the nearest transmission lines.
-  </p>
-</div>
-
-<div class="reportSection tableContainer">
-  <h4>Distance to Infrastructure</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>Infrastructure</th>
-        <th>Distance (km)</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#infrastructure}}
-      <tr>
-        <td>{{Name}}</td>
-        <td>{{DistInKM}}</td>
-      </tr>
-      {{/infrastructure}}
-    </tbody>
-    <tfoot>
-      <tr>
-      <td colspan="2" class="paragraph">
-      The horizontal distance to ferries, ports, harbours, fuel docks, and other marine and coastal infrastructure might be helpful for planning marine uses and activities that are supported in this zone. 
-      </td>
-      </tr>
-    </tfoot>
-  </table>
-</div>
-{{/pmz}}
-
 
 {{#anyAttributes}}
 <div class="reportSection">

@@ -4,10 +4,9 @@ templates = require '../templates/templates.js'
 class ArrayEconomicTab extends ReportTab
   name: 'Human Well-Being'
   className: 'economic'
-  template: templates.economic
+  template: templates.arrayEconomic
   dependencies: [
-    "Closures"
-    "OverlapWithExistingProvincialTenures"
+
   ]
   timeout: 600000
 
@@ -18,8 +17,6 @@ class ArrayEconomicTab extends ReportTab
       sketchClass: @sketchClass.forTemplate()
       attributes: @model.getAttributes()
       admin: @project.isAdmin window.user
-      closures: @recordSet("Closures", "FisheriesClosures").toArray()
-      provincial: @recordSet("OverlapWithExistingProvincialTenures", "ProvincialTenures").toArray()
       array: true
     
     @$el.html @template.render(context, templates)

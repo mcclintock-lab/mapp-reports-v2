@@ -1,69 +1,44 @@
-{{#pmz}}
+{{^pmz}}
+<div class="reportSection">
+  <h4>Transmission Lines <a href="#" data-toggle-node="51f6ad677bbb9b2457020f52" data-visible="false">show layer</a></h4>
+  <p class="large">
+    This zone is {{transmissionLines}} km from the nearest transmission lines.
+  </p>
+</div>
+
 <div class="reportSection tableContainer">
-  <h4>Overlap with Fisheries Closures</h4>
-  <table data-paging="10" data-no-rows="Does not overlap any Fisheries Closures. Fisheries closures may need to be considered to reduce potential conflicts between uses and activities. Federal Rockfish Conservation Areas and Federal Sponge Reef Reserve are analysed for overlap with {{#array}}zones within this proposal{{/array}}{{^array}}this zone{{/array}}. ">
+  <h4>Distance to Infrastructure</h4>
+  <table>
     <thead>
       <tr>
-        <th>Tenures</th>
-        <th>Overlap (km²)</th>
-        <th>Overlap %</th>
+        <th>Infrastructure</th>
+        <th>Distance (km)</th>
       </tr>
     </thead>
     <tbody>
-      {{#closures}}
+      {{#infrastructure}}
       <tr>
-        <td>{{NAME}}</td>
-        <td>{{CLPD_AREA}}</td>
-        <td>{{PERC_AREA}}</td>
+        <td>{{Name}}</td>
+        <td>{{DistInKM}}</td>
       </tr>
-      {{/closures}}
+      {{/infrastructure}}
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="3" class="paragraph">
-          Fisheries closures may need to be considered to reduce potential conflicts between uses and activities. Federal Rockfish Conservation Areas and Federal Sponge Reef Reserve are analysed for overlap with {{#array}}zones within this proposal{{/array}}{{^array}}this zone{{/array}}. 
-        </td>
+      <td colspan="2" class="paragraph">
+      The horizontal distance to ferries, ports, harbours, fuel docks, and other marine and coastal infrastructure might be helpful for planning marine uses and activities that are supported in this zone. 
+      </td>
       </tr>
     </tfoot>
   </table>
-  <!-- <a href="#" data-toggle-node="51f5545c08dc4f5f2d216146" data-visible="false">show habitats layer</a> -->
 </div>
 {{/pmz}}
 
-<div class="reportSection tableContainer">
-  <h4>Overlap with Provincial Tenures <a href="#" data-toggle-node="51f2f5cba72ec0681606208e" data-visible="false">show layer</a></h4>
-  <table data-paging="10" data-no-rows="Does not overlap any Provincial Tenures.">
-    <thead>
-      <tr>
-        <th>Tenures</th>
-        <th>Overlap (km²)</th>
-        <th>Overlap %</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#provincial}}
-      <tr>
-        <td>{{NAME}}</td>
-        <td>{{CLPD_AREA}}</td>
-        <td>{{PERC_AREA}}</td>
-      </tr>
-      {{/provincial}}
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="3" class="paragraph">
-          {{#smz}}
-          One of the objectives for Special Management Zones is to provide for certainty for business and user groups, including economic development opportunities.  To reduce potential conflicts between uses and activities, Special Management Zones need to consider existing provincial crown tenures. 
-          {{/smz}}
-          {{#pmz}}
-          To reduce potential conflicts between uses and activities, Protection Management Zones need to consider existing provincial crown tenures.
-          {{/pmz}}
-          {{#array}}
-          To reduce potential conflicts between uses and activities, zones need to consider existing provincial crown tenures.
-          {{/array}}
-        </td>
-      </tr>
-    </tfoot>
-  </table>
-  <!-- <a href="#" data-toggle-node="51f5545c08dc4f5f2d216146" data-visible="false">show habitats layer</a> -->
+{{#pmz}}
+<div class="reportSection">
+  <h4>No Reports</h4>
+  <p class="large">
+    Human Well-Being reports for Protection Management Zones are coming soon...
+  </p>
 </div>
+{{/pmz}}

@@ -1,18 +1,16 @@
 ReportTab = require 'reportTab'
 templates = require '../templates/templates.js'
 
-class CultureTab extends ReportTab
+class ArrayCultureTab extends ReportTab
   name: 'Governance'
   className: 'culture'
-  template: templates.culture
+  template: templates.arrayCulture
   dependencies: [
     "ExistingMarineProtectedAreas"
     "Closures"
     "OverlapWithExistingProvincialTenures"
   ]
-
-  # timeout: 60000
-
+  timeout: 600000
   render: () ->
     # setup context object with data and render the template from it
     zoneType = _.find @model.getAttributes(), (attr) -> 
@@ -36,5 +34,7 @@ class CultureTab extends ReportTab
 
     @$el.html @template.render(context, templates)
     @enableLayerTogglers()
+    @enableTablePaging()
 
-module.exports = CultureTab
+
+module.exports = ArrayCultureTab
