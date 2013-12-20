@@ -5,51 +5,22 @@
       <tr>
         <th>Habitat</th>
         <th>Protected Area (km²)</th>
+        <th>Protected Area (%)</th>
       </tr>
     </thead>
     <tbody>
       {{#habitats}}
-      <tr><td>{{HAB_NAME}}</td><td>{{CLPD_AREA}}</td></tr>
+      <tr><td>{{HAB_NAME}}</td><td>{{CLPD_AREA}}</td><td>{{PERC_AREA}}</td></tr>
       {{/habitats}}
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="3" class="paragraph">
+        <td colspan="4" class="paragraph">
           Habitat data for benthic ecosystems, pelagic areas, and oceanographic processes is used to inform siting of zones. Included here are biogenic habitats as well as community-forming species, such as eelgrass and kelp.
         </td>
       </tr>
     </tfoot>
   </table>
-</div>
-
-<div class="reportSection tableContainer">
-  <h4>Overlap with Existing Protected Areas <a href="#" data-toggle-node="520d4c2a674659cb7b35d575" data-visible="false">show layer</a></h4>
-  <table data-paging="10" data-no-rows="Does not overlap any Existing Protected Areas. MaPP recommends spatial locations for marine protection that include either or both ecological and cultural values, including areas that contribute to a Marine Protected Area network for the Northern Shelf Bioregion.">
-    <thead>
-      <tr>
-        <th>Protected Area</th>
-        <th>Overlap (km²)</th>
-        <th>Overlap %</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#existingMPAs}}
-      <tr>
-        <td>{{NAME}}</td>
-        <td>{{CLPD_AREA}}</td>
-        <td>{{PERC_AREA}}</td>
-      </tr>
-      {{/existingMPAs}}
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="3" class="paragraph">
-          MaPP recommends spatial locations for marine protection that include either or both ecological and cultural values, including areas that contribute to a Marine Protected Area network for the Northern Shelf Bioregion.  
-        </td>
-      </tr>
-    </tfoot>
-  </table>
-  <!-- <a href="#" data-toggle-node="51f5545c08dc4f5f2d216146" data-visible="false">show habitats layer</a> -->
 </div>
 
 <div class="reportSection tableContainer">

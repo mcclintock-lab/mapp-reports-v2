@@ -16,6 +16,8 @@ class ArrayEnvironmentTab extends ReportTab
 
   render: () ->
     # setup context object with data and render the template from it
+    importantAreas = @recordSet("OverlapWithImportantAreas", "OverlapWithImportantAreas").toArray()
+    
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -23,8 +25,8 @@ class ArrayEnvironmentTab extends ReportTab
       admin: @project.isAdmin window.user
       nonFishBreedingAreas: @recordSet('OverlapWithNonFishBreedingAreas', 'OverlapWithNonFishBreedingAreas').toArray()
       habitats: @recordSet('OverlapWithBiogenicAndCommunityFormingSpecies', 'OverlapWithBiogenicAndCommunityFormingSpecies').toArray()
-      importantAreas: @recordSet("OverlapWithImportantAreas", 
-        "OverlapWithImportantAreas").toArray()
+      importantAreas: importantAreas
+      
       marineClassifications: @recordSet('OverlapWithMarineClassifications', 'OverlapWithMarineClassifications').toArray()
 
       marxanAnalyses: _.map(@recordSet("MarxanAnalysis", "MarxanAnalysis")
