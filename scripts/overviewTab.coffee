@@ -19,6 +19,10 @@ class OverviewTab extends ReportTab
     zoneType = _.find @model.getAttributes(), (attr) -> 
       attr.exportid is 'ZONE_TYPE'
     zoneType = zoneType?.value or 'smz'
+    #sketchclass_name = _.find @model.getAttributes(), (attr) -> 
+    #  attr.exportid is 'SC_NAME'
+    sketchclass_name = @recordSet('ZoneSize', 'ZoneSize').raw('SC_NAME')
+    console.log("name: ", sketchclass_name)
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -26,6 +30,8 @@ class OverviewTab extends ReportTab
       anyAttributes: @model.getAttributes()?.length > 0
       admin: @project.isAdmin window.user
       size: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
+      percent: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_PERC', 1)
+      sc_name: sketchclass_name
       adjacentProtectedArea: @recordSet('TerrestrialProtectedAreas', 
         'TerrestrialProtectedAreas').bool('Result')
 
