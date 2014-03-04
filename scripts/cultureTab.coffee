@@ -9,6 +9,7 @@ class CultureTab extends ReportTab
     "ExistingMarineProtectedAreas"
     "Closures"
     "OverlapWithExistingProvincialTenures"
+    'TerrestrialProtectedAreas'
   ]
 
   # timeout: 60000
@@ -33,7 +34,9 @@ class CultureTab extends ReportTab
         "ExistingMarineProtectedAreas").toArray()
       closures: @recordSet("Closures", "FisheriesClosures").toArray()
       provincial: @recordSet("OverlapWithExistingProvincialTenures", "ProvincialTenures").toArray()
-
+      adjacentProtectedArea: @recordSet('TerrestrialProtectedAreas', 
+        'TerrestrialProtectedAreas').bool('Result')
+      
     @$el.html @template.render(context, templates)
     @enableLayerTogglers()
 

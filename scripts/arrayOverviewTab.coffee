@@ -11,26 +11,20 @@ class ArrayOverviewTab extends ReportTab
   template: templates.arrayOverview
   dependencies: [
     'ZoneSize'
-    # 'TerrestrialProtectedAreas'
-    # 'DistanceToTransmissionLines'
   ]
   timeout: 600000
 
   render: () ->
-    # console.log @recordSet("DistanceToTransmissionLines", "DistanceToTransmissionLines")
+
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
       attributes: @model.getAttributes()
       admin: @project.isAdmin window.user
       size: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
+      percent: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_PERC', 1)
+      sc_name: @recordSet('ZoneSize', 'ZoneSize').raw('SC_NAME')
       numChildren: @children.length
-      # adjacentProtectedArea: @recordSet('TerrestrialProtectedAreas', 
-      #   'TerrestrialProtectedAreas').bool('Result')[0]
-      # transmissionLines: @recordSet("DistanceToTransmissionLines", 
-      #   "DistanceToTransmissionLines").float('DistInKM', 2)
-      # infrastructure: @recordSet("DistanceToInfrastructure", 
-      #   "DistanceToInfrastructure").toArray()
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()
