@@ -9,6 +9,13 @@
       </tr>
     </thead>
     <tbody>
+        {{^hasOverlapWithExistingMPAs}}
+        <tr>
+          <td colspan="3" style="text-align:center;">
+            <p>No overlap with existing protected areas</p>
+          </td>
+        </tr>
+      {{/hasOverlapWithExistingMPAs}}
       {{#existingMPAs}}
       <tr>
         <td>{{NAME}}</td>
@@ -40,6 +47,13 @@
       </tr>
     </thead>
     <tbody>
+        {{^hasClosures}}
+          <tr>
+          <td colspan="3" style="text-align:center;">
+            <p>No overlap with fisheries closures</p>
+          </td>
+        </tr>
+      {{/hasClosures}}
       {{#closures}}
       <tr>
         <td>{{NAME}}</td>
@@ -71,6 +85,13 @@
       </tr>
     </thead>
     <tbody>
+      {{^hasProvincialTenures}}
+        <tr>
+          <td colspan="3" style="text-align:center;">
+            <p>No overlap with Provincial Tenures</p>
+          </td>
+        </tr>
+      {{/hasProvincialTenures}}
       {{#provincial}}
       <tr>
         <td>{{NAME}}</td>
@@ -82,15 +103,7 @@
     <tfoot>
       <tr>
         <td colspan="3" class="paragraph">
-          {{#smz}}
-          One of the objectives for Special Management Zones is to provide for certainty for business and user groups, including economic development opportunities.  To reduce potential conflicts between uses and activities, Special Management Zones need to consider existing provincial crown tenures. 
-          {{/smz}}
-          {{#pmz}}
-          To reduce potential conflicts between uses and activities, Protection Management Zones need to consider existing provincial crown tenures.
-          {{/pmz}}
-          {{#array}}
-          To reduce potential conflicts between uses and activities, zones need to consider existing provincial crown tenures.
-          {{/array}}
+          To avoid, minimise and/or reduce potential conflicts between existing tenured uses and activities and marine protection, examine the overlap with provincial crown tenures from the BC Provincial tenures database. Data source: Provincial Tenures. Updated: Dec 1013
         </td>
       </tr>
     </tfoot>
