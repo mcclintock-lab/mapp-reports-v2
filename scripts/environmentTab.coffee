@@ -19,6 +19,7 @@ class EnvironmentTab extends ReportTab
     zoneType = _.find @model.getAttributes(), (attr) -> 
       attr.exportid is 'ZONE_TYPE'
     zoneType = zoneType?.value or 'smz'
+
     # setup context object with data and render the template from it
     context =
       sketch: @model.forTemplate()
@@ -31,6 +32,7 @@ class EnvironmentTab extends ReportTab
       habitats: @recordSet('OverlapWithBiogenicAndCommunityFormingSpecies', 'OverlapWithBiogenicAndCommunityFormingSpecies').toArray()
       importantAreas: @recordSet("OverlapWithImportantAreas", 
         "OverlapWithImportantAreas").toArray()
+      
       marineClassifications: @recordSet('OverlapWithMarineClassifications', 'OverlapWithMarineClassifications').toArray()
 
 
