@@ -5,7 +5,7 @@
       <tr>
         <th>Protected Area</th>
         <th>Overlap (km²)</th>
-        <th>Overlap %</th>
+        <th>Overlap (%)<sup>*</sup></th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +28,7 @@
       <tr>
         <td colspan="3" class="paragraph">
           MaPP recommends spatial locations for marine protection that include either or both ecological and cultural values, including areas that contribute to a Marine Protected Area network for the Northern Shelf Bioregion.  
+          <p>* = Overlap (%) calculates the proportion of the sub-regional total of the layer/feature that falls within the boundary of the zone/collection</p>
         </td>
       </tr>
     </tfoot>
@@ -42,7 +43,7 @@
       <tr>
         <th>Tenures</th>
         <th>Overlap (km²)</th>
-        <th>Overlap %</th>
+        <th>Overlap (%)<sup>*</sup></th>
       </tr>
     </thead>
     <tbody>
@@ -64,7 +65,13 @@
     <tfoot>
       <tr>
         <td colspan="3" class="paragraph">
-          Fisheries closures may need to be considered to reduce potential conflicts between uses and activities. Federal Rockfish Conservation Areas and Federal Sponge Reef Reserve are analysed for overlap with {{#array}}zones within this proposal{{/array}}{{^array}}this zone{{/array}}. 
+          {{#smz}}
+            Fisheries closures may need to be considered to reduce potential conflicts between uses and activities. Federal Rockfish Conservation Areas and Federal Sponge Reef Reserve are analysed for overlap with zones within this proposal. 
+          {{/smz}}
+          {{#pmz}}
+            Considering existing fisheries closures can provide additional support for the location of protection management zones.
+          {{/pmz}}
+          <p>* = Overlap (%) calculates the proportion of the sub-regional total of the layer/feature that falls within the boundary of the zone/collection</p>
         </td>
       </tr>
     </tfoot>
@@ -79,7 +86,7 @@
       <tr>
         <th>Tenures</th>
         <th>Overlap (km²)</th>
-        <th>Overlap %</th>
+        <th>Overlap (%)<sup>*</sup></th>
       </tr>
     </thead>
     <tbody>
@@ -102,6 +109,7 @@
       <tr>
         <td colspan="3" class="paragraph">
           To avoid, minimise and/or reduce potential conflicts between existing tenured uses and activities and marine protection, examine the overlap with provincial crown tenures from the BC Provincial tenures database. Data source: Provincial Tenures. Updated: Dec 1013
+          <p>* = Overlap (%) calculates the proportion of the sub-regional total of the layer/feature that falls within the boundary of the zone/collection</p>
         </td>
       </tr>
     </tfoot>

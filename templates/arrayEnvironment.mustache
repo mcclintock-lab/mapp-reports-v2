@@ -5,7 +5,7 @@
       <tr>
         <th>Habitat</th>
         <th>Protected Area (km²)</th>
-        <th>Protected Area (%)</th>
+        <th>Protected Area (%)*</th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +22,6 @@
     </tfoot>
   </table>
 </div>
-
 <div class="reportSection tableContainer">
   <h4>Overlap with Important Marine Areas</h4>
   <table  data-paging="10" data-no-rows="Does not overlap any Important Marine Areas">
@@ -30,7 +29,7 @@
       <tr>
         <th>Important Area</th>
         <th>Overlap (km²)</th>
-        <th>Overlap %</th>
+        <th>Overlap (%)<sup>*</sup></th>
       </tr>
     </thead>
     <tbody>
@@ -51,7 +50,7 @@
           <p>
             Important Areas were identified during the process of establishing Ecologically and Biologically Significant Areas (EBSAs) by the <a href="http://pncima.org/site/atlas.html" target="_blank"> Pacific North Coast Integrated Management Area (PNCIMA)</a>. Important Bird Areas (IBAs) were also identified by Bird Studies Canada and Nature Canada, in partnership with BirdLife International.  Critical Habitat meets Canada's Species at Risk (SARA) requirements. Potential critical is insufficient information to meet SARA requirements. See the PNCIMA atlas for more information. See data layers for more information.  Data sources: up to 2009.
           </p>
-
+          <p>* = Overlap (%) calculates the proportion of the sub-regional total of the layer/feature that falls within the boundary of the zone/collection</p>
         </td>
       </tr>
     </tfoot>
@@ -59,8 +58,6 @@
   </table>
   <!-- <a href="#" data-toggle-node="51f5545c08dc4f5f2d216146" data-visible="false">show habitats layer</a> -->
 </div>
-
-
 <div class="reportSection">
   <h4>Marxan Analysis</h4>
   <select class="chosen" width="400px">
@@ -72,10 +69,10 @@
   <div class="viz"></div>
   <p class="scenarioDescription"></p>
   <p>
-    MaPP collaborated with the <a href="http://bcmca.ca/" target="_blank">BC Marine Conservation Analysis (BCMCA)</a> to identify marine areas of high conservation value based on spatial datasets of ecological information. These Marxan scenarios can be used to inform the location or siting of MaPP zones. <a href="http://www.uq.edu.au/marxan/" target="_blank">Marxan</a> is a decision support tool developed by the University of Queensland to provide solutions to the “minimum set problem” - capturing a specified amount (target) of individual features for the least cost. Based on relatively simple mathematical algorithms and equations, Marxan searches millions of potential solutions to find the best balance between costs and benefits. In short, Marxan solutions minimize the overall cost subject to the constraint of meeting specified “targets” for all features.
+    MaPP collaborated with the <a href="http://bcmca.ca/" target="_blank">BC Marine Conservation Analysis (BCMCA)</a> to use Marxan to identify marine areas of high conservation value based on spatial datasets of ecological information (features). These Marxan scenarios can be used to inform the location or siting of PMZs. <a href="http://www.uq.edu.au/marxan/" target="_blank">Marxan</a> is a decision support tool developed by the University of Queensland to provide solutions which capture a specified amount (target) of individual features for the least cost. The cost layer used for these Marxan runs was solely based on area. Based on relatively simple mathematical algorithms and equations, Marxan searches millions of potential solutions to find the best balance between costs and benefits. These MaPP Marxan solutions minimize the overall area subject to the constraint of meeting specified “targets” for all ecological features.
   </p>
   <p>
-    MaPP consulted the MaPP Science Advisory Committee (SAC) for advice on scenarios and target selection.  The SAC supported the decision to use the percentage target categories established by the BCMCA project team in 2006. Please see this <a href="https://dl.dropboxusercontent.com/u/1764986/BCMCA-Marxan for MaPP-Report on initial scenarios_27Feb2013.pdf" target="_blank">2013 BCMCA report</a> for more information about the MaPP-BCMCA project and Marxan scenarios, and consult the <a href="http://bcmca.ca" target="_blank">BCMCA Atlas</a> for detailed information about targets, species, and habitats.
+    MaPP consulted the MaPP Science Advisory Committee (SAC) for advice on scenarios and target selection. The SAC supported the decision to use the percentage target categories established by the BCMCA project team in 2006. Please see this <a href="https://dl.dropboxusercontent.com/u/1764986/BCMCA-Marxan for MaPP-Report on initial scenarios_27Feb2013.pdf" target="_blank">2013 BCMCA report</a> for more information about the MaPP-BCMCA project and Marxan scenarios, and consult the <a href="http://bcmca.ca" target="_blank">BCMCA Atlas</a> for detailed information about targets, species, and habitats.
   </p>
 </div>
 <div class="reportSection tableContainer">
@@ -113,7 +110,7 @@
       <tr>
         <th>Classification</th>
         <th>Overlap (km²)</th>
-        <th>Overlap %</th>
+        <th>Overlap (%)<sup>*</sup></th>
       </tr>
     </thead>
     <tbody>
@@ -131,6 +128,7 @@
           <p>
             In Protection Management Zones, representation is often one criteria for siting in a network. Data for this report includes benthic ecosystems and oceanographic processes.  See metadata in the data layers for more information. 
           </p>
+          <p>* = Overlap (%) calculates the proportion of the sub-regional total of the layer/feature that falls within the boundary of the zone/collection</p>
         </td>
       </tr>
     </tfoot>
