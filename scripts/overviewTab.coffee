@@ -28,7 +28,7 @@ class OverviewTab extends ReportTab
       anyAttributes: @model.getAttributes()?.length > 0
       admin: @project.isAdmin window.user
       size: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
-      percent: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_PERC', 1)
+      percent: @recordSet('ZoneSize', 'ZoneSize').raw('SIZE_PERC')
       sc_name: sketchclass_name
 
 
