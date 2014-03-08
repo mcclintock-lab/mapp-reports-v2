@@ -1,10 +1,12 @@
 {{^pmz}}
+{{#isRenewableEnergy}}
 <div class="reportSection">
   <h4>Distance to Transmission Lines <a href="#" data-toggle-node="51f6ad677bbb9b2457020f52" data-visible="false">show layer</a></h4>
   <p class="large">
     This zone is <strong>{{transmissionLines}}</strong> km from the nearest <strong>transmission lines</strong>. This horizontal, straight line distance might be helpful in calculating the possible economic costs for renewable energy development in this zone. 
   </p>
 </div>
+{{/isRenewableEnergy}}
 <div class="reportSection tableContainer">
   <h4>Distance to Infrastructure</h4>
   <table>
@@ -31,6 +33,15 @@
     </tfoot>
   </table>
 </div>
+{{#isTourism}}
+<div class="reportSection">
+  <h4>Distance to Nearest Marine Protected Areas</h4>
+  <p class="large">
+    This zone is <strong>{{distToMPAs}} km</strong> from the <strong>{{nearestMPA}}</strong>, the nearest protected area. Protected areas may have higher species diversity and may be
+    important for siting commercial tourism zones. Data sources: Jan 2014
+  </p>
+</div>
+{{/isTourism}}
 {{/pmz}}
 {{#pmz}}
 <div class="reportSection">

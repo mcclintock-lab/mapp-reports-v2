@@ -48,5 +48,6 @@ class CultureTab extends ReportTab
       
     @$el.html @template.render(context, templates)
     @enableLayerTogglers()
+    @enableTablePaging()
 
 module.exports = CultureTab

@@ -8,21 +8,41 @@ class EconomicTab extends ReportTab
   dependencies: [
     'DistanceToInfrastructure'
     'DistanceToTransmissionLines'
+    'DistanceToMarineProtectedAreas'
   ]
   timeout: 600000
 
   render: () ->
     zoneType = _.find @model.getAttributes(), (attr) -> 
       attr.exportid is 'ZONE_TYPE'
+
+
+
     zoneType = zoneType?.value or 'smz'
     dist_to_tl = 0.0
     dist_to_inf = []
+    isRenewableEnergy = false
+    isTourism = false
 
     if zoneType is 'smz'
       dist_to_tl = @recordSet("DistanceToTransmissionLines", 
           "DistanceToTransmissionLines").float('DistInKM', 2)
       dist_to_inf = @recordSet("DistanceToInfrastructure", 
           "DistanceToInfrastructure").toArray()
+      distToMPAs = @recordSet("DistanceToMarineProtectedAreas", 
+          "DistanceToMarineProtectedAreas").float('DistInKM', 1)
+      nearestMPA = @recordSet("DistanceToMarineProtectedAreas", 
+          "DistanceToMarineProtectedAreas").raw('NEAR_NAME')
+      smzType = _.find @model.getAttributes(), (attr) -> 
+        attr.exportid is 'SMZtype'
+
+      if smzType.value[0] is 'Marine Renewable Energy'
+        isRenewableEnergy = true 
+
+      if smzType.value[0] is 'Recreation & Tourism'
+        isTourism = true
+
+
     # setup context object with data and render the template from it
     context =
       sketch: @model.forTemplate()
@@ -35,8 +55,11 @@ class EconomicTab extends ReportTab
       smz: !(@children?.length > 0) and zoneType is 'smz'
 
       transmissionLines: dist_to_tl
-
       infrastructure: dist_to_inf
+      distToMPAs: distToMPAs
+      nearestMPA: nearestMPA
+      isRenewableEnergy: isRenewableEnergy
+      isTourism: isTourism
 
     @$el.html @template.render(context, templates)
     @enableLayerTogglers()
