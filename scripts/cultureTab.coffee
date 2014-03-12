@@ -33,8 +33,8 @@ class CultureTab extends ReportTab
       admin: @project.isAdmin window.user
       # overlap: @recordSet("ArchSiteOverlap", "ArchSiteOverlap").bool('Result')
       array: @children?.length > 0
-      pmz: !(@children?.length > 0) and zoneType is 'pmz'
-      smz: !(@children?.length > 0) and zoneType is 'smz'
+      pmz: zoneType is 'pmz'
+      smz:  zoneType is 'smz'
 
       closures: closures
       hasClosures: hasClosures
