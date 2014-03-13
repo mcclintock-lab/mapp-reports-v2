@@ -26,6 +26,18 @@ class CultureTab extends ReportTab
     hasOverlapWithExistingMPAs = existingMPAs?.length > 0
     closures = @recordSet("Closures", "FisheriesClosures").toArray()
     hasClosures = closures?.length > 0
+    adjAreas = @recordSet('TerrestrialProtectedAreas', 
+        'TerrestrialProtectedAreas').toArray()
+    if adjAreas?.length > 0
+      adjacentProtectedArea = @recordSet('TerrestrialProtectedAreas', 
+          'TerrestrialProtectedAreas').bool('Result')
+      adjacentProtectedAreaName = @recordSet('TerrestrialProtectedAreas', 
+          'TerrestrialProtectedAreas').raw('RES_NAME')
+      adjacentProtectedAreaDist = @recordSet('TerrestrialProtectedAreas', 
+          'TerrestrialProtectedAreas').float('RES_DIST')
+      
+    else
+      adjacentProtectedArea = false
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -42,9 +54,10 @@ class CultureTab extends ReportTab
       hasProvincialTenures: hasProvincialTenures
       existingMPAs: existingMPAs
       hasOverlapWithExistingMPAs: hasOverlapWithExistingMPAs
-      
-      adjacentProtectedArea: @recordSet('TerrestrialProtectedAreas', 
-        'TerrestrialProtectedAreas').bool('Result')
+      adjacentProtectedArea: adjacentProtectedArea
+      adjacentProtectedAreaName: adjacentProtectedAreaName
+      adjacentProtectedAreaDist: adjacentProtectedAreaDist
+
       
     @$el.html @template.render(context, templates)
     @enableLayerTogglers()

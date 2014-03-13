@@ -42,16 +42,15 @@
 </div>
 {{#adjacentProtectedArea}}
 <div class="reportSection">
-  <h4>Adjacent to Terrestrial Protected Areas</h4>
+  <h4>Adjacency to Terrestrial Protected Areas</h4>
   <p class="large green-check">
-    This zone is adjacent to a <strong>Terrestrial Protected Area</strong>.
+    This zone is adjacent to a <strong>{{adjacentProtectedAreaName}}</strong>, a <strong>Terrestrial Protected Area</strong> that is <strong>{{adjacentProtectedAreaDist}} km </strong> away.
   </p>
   <p>
     Build on past and existing zoning efforts that are consistent with an ecosystem-based management approach.  Wherever possible, do not duplicate existing zoning efforts and consider existing terrestrial zoning for adjacent marine zoning to achieve zoning objectives.
   </p>
 </div>
 {{/adjacentProtectedArea}}
-
 <div class="reportSection tableContainer">
   <h4>Overlap with Fisheries Closures</h4>
   <table data-paging="10" data-no-rows="Does not overlap any Fisheries Closures. Fisheries closures may need to be considered to reduce potential conflicts between uses and activities. Federal Rockfish Conservation Areas and Federal Sponge Reef Reserve are analysed for overlap with {{#array}}zones within this proposal{{/array}}{{^array}}this zone{{/array}}. ">
