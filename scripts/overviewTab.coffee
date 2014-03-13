@@ -20,6 +20,7 @@ class OverviewTab extends ReportTab
     zoneType = zoneType?.value or 'smz'
 
     sketchclass_name = @recordSet('ZoneSize', 'ZoneSize').raw('SC_NAME')
+    sketchclass_name = sketchclass_name.replace /Zone/, "marine plan area"
 
     context =
       sketch: @model.forTemplate()

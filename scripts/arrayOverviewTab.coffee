@@ -15,7 +15,8 @@ class ArrayOverviewTab extends ReportTab
   timeout: 600000
 
   render: () ->
-
+    sc_name = @recordSet('ZoneSize', 'ZoneSize').raw('SC_NAME')
+    sc_name = sc_name.replace /Zone/, "marine plan area"
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -23,7 +24,8 @@ class ArrayOverviewTab extends ReportTab
       admin: @project.isAdmin window.user
       size: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
       percent: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_PERC', 1)
-      sc_name: @recordSet('ZoneSize', 'ZoneSize').raw('SC_NAME')
+      
+      sc_name: sc_name
       numChildren: @children.length
 
     @$el.html @template.render(context, partials)

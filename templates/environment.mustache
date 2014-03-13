@@ -1,11 +1,11 @@
 <div class="reportSection tableContainer">
-  <h4>Habitat Representation <!-- <a href="#" data-toggle-node="51f302d508dc4f5f2d00996a" data-visible="false">show layer</a> --></h4>
+  <h4>Habitat: Overlap with Biogenic/Community Forming Species<!-- <a href="#" data-toggle-node="51f302d508dc4f5f2d00996a" data-visible="false">show layer</a> --></h4>
   <table data-paging="10" data-no-rows="Does not overlap any habitats">
     <thead>
       <tr>
         <th>Habitat</th>
-        <th>Protected Area (km²)</th>
-        <th>Protected Area (%)</th>
+        <th>Overlap (km²)</th>
+        <th>Overlap (%)<sup>*</sup></th>
       </tr>
     </thead>
     <tbody>
@@ -16,7 +16,13 @@
     <tfoot>
       <tr>
         <td colspan="3" class="paragraph">
-          Habitat data for benthic ecosystems, pelagic areas, and oceanographic processes is used to inform siting of this zone. Included here are biogenic habitats as well as community-forming species, such as eelgrass and kelp.
+          {{#pmz}}
+            In Protection Management Zones, representation is often one criteria for siting in a network.  This report calculates the representation of a number of biogenic habitats and community forming species including kelp (various types), eelgrass, sponge reefs and corals within the boundaries of the PMZ.
+          {{/pmz}}
+          {{#smz}}
+            The potential impact of activities on marine habitats is an important consideration when identifying locations for Special Management Zones.  This report calculates the overlap of the proposed SMZ(s) with a number of biogenic habitats and community forming species including kelp (various types), eelgrass, sponge reefs and corals.
+          {{/smz}}
+          <p>* = Overlap (%) calculates the proportion of the sub-regional total of the habitat types that fall within the boundary of this zone</p>
         </td>
       </tr>
     </tfoot>
@@ -24,11 +30,11 @@
 </div>
 
 <div class="reportSection tableContainer">
-  <h4>Overlap with Important Marine Areas</h4>
+  <h4>Habitat: Overlap with Important Areas, IBAs & Critical Habitat</h4>
   <table data-paging="10" data-no-rows="Does not overlap any Important Marine Areas">
     <thead>
       <tr>
-        <th>Important Area</th>
+        <th>Important Area/IBA/Critical Habitat</th>
         <th>Overlap (km²)</th>
         <th>Overlap (%)<sup>*</sup></th>
       </tr>
@@ -43,12 +49,11 @@
       {{/importantAreas}}
     </tbody>
     <tfoot>
-
       <tr>
         <td colspan="3" class="paragraph">
         {{#pmz}}
           <p>
-            When selecting sites for PMZs, consider the location of Important Marine Areas for marine mammals, fish and birds. 
+            To reduce potential conflicts between human uses and marine species, consider these identified important areas for marine mammals, fish and marine birds.  Note that these areas do not include all of the foraging and breeding locations for marine species in the MaPP study area. 
           </p>
           <p>
             Important Areas were identified during the process of establishing Ecologically and Biologically Significant Areas (EBSAs) by the <a href="http://pncima.org/site/atlas.html" target="_blank"> Pacific North Coast Integrated Management Area (PNCIMA)</a>. Important Bird Areas (IBAs) were also identified by Bird Studies Canada and Nature Canada, in partnership with BirdLife International.  Critical Habitat meets Canada's Species at Risk (SARA) requirements. See data layers for more information.  Data sources: up to 2009.
@@ -61,9 +66,8 @@
           <p>
             Important Areas were identified during the process of establishing Ecologically and Biologically Significant Areas (EBSAs) by the <a href="http://pncima.org/site/atlas.html" target="_blank"> Pacific North Coast Integrated Management Area (PNCIMA)</a>. Important Bird Areas (IBAs) were also identified by Bird Studies Canada and Nature Canada, in partnership with BirdLife International.  Critical Habitat meets Canada's Species at Risk (SARA) requirements. Potential critical is insufficient information to meet SARA requirements. See the PNCIMA atlas for more information. See data layers for more information.  Data sources: up to 2009.
           </p>
-
         {{/smz}}
-        <p>* = Overlap (%) calculates the proportion of the sub-regional total of the important marine areas that fall within the boundary of this zone</p>
+        <p>* = Overlap (%) calculates the proportion of the sub-regional total of the habitat that falls within the boundary of this zone</p>
         </td>
       </tr>
     </tfoot>
@@ -71,7 +75,6 @@
   </table>
   <!-- <a href="#" data-toggle-node="51f5545c08dc4f5f2d216146" data-visible="false">show habitats layer</a> -->
 </div>
-
 
 <div class="reportSection">
   <h4>Marxan Analysis</h4>
@@ -119,11 +122,11 @@
   </table>
 </div>
 <div class="reportSection tableContainer">
-  <h4>Overlap with Marine Classifications</h4>
-  <table  data-paging="10" data-no-rows="Does not overlap any Marine Classifications">
+  <h4>Habitat: Overlap with Marine Classifications and Oceanographic Regions</h4>
+  <table  data-paging="10" data-no-rows="Does not overlap any Marine Classifications or Oceanographic Regions">
     <thead>
       <tr>
-        <th>Classification</th>
+        <th>Classification/Region Type</th>
         <th>Overlap (km²)</th>
         <th>Overlap (%)<sup>*</sup></th>
       </tr>
@@ -140,10 +143,18 @@
     <tfoot>
       <tr>
         <td colspan="3" class="paragraph">
-          <p>
-            In Protection Management Zones, representation is often one criteria for siting in a network. Data for this report includes benthic ecosystems and oceanographic processes.  See metadata in the data layers for more information. 
-          </p>
-          <p>* = Overlap (%) calculates the proportion of the sub-regional total of the marine classification features that fall within the boundary of this zone</p>
+          {{#pmz}}
+            <p>
+              In Protection Management Zones, representation of habitat types is often one criteria for siting in a network.  Data in this report includes Ecosections, oceanographic regions, benthic classes and areas of high tidal current. 
+            </p>
+          {{/pmz}}
+          {{#smz}}
+            <p>
+              The potential impact of activities on marine habitats is an important consideration when identifying locations for Special Management Zones.  
+              This report calculates the overlap of the proposed SMZ(s) with Ecosections, oceanographic regions, benthic classes and areas of high tidal current.
+            </p>
+          {{/smz}}
+          <p>* = Overlap (%) calculates the proportion of the sub-regional total of the classification/region type that fall within the boundary of this zone</p>
         </td>
       </tr>
     </tfoot>

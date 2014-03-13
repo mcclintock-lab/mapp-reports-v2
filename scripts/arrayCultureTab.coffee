@@ -39,8 +39,8 @@ class ArrayCultureTab extends ReportTab
       admin: @project.isAdmin window.user
       # overlap: @recordSet("ArchSiteOverlap", "ArchSiteOverlap").bool('Result')
       array: @children?.length > 0
-      pmz: hasPMZs
-      smz: hasSMZs
+      hasPMZs: hasPMZs
+      hasSMZs: hasSMZs
       
       closures: closures
       hasClosures: hasClosures

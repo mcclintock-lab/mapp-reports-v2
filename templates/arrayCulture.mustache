@@ -27,8 +27,18 @@
     <tfoot>
       <tr>
         <td colspan="3" class="paragraph">
-          MaPP recommends spatial locations for marine protection that include either or both ecological and cultural values, including areas that contribute to a Marine Protected Area network for the Northern Shelf Bioregion.  
-          <p>* = Overlap (%) calculates the proportion of the sub-regional total of the protected areas that fall within the boundary of this collection</p>
+          {{#hasPMZs}}
+            <p>
+              MaPP recommends spatial locations for marine protection that include both ecological and cultural values, including areas that may contribute to a Marine Protected Area network for the Northern Shelf Bioregion.  When determining locations for protection, where possible build on existing zoning efforts that are consistent with desired protected area objectives.
+            </p>
+          {{/hasPMZs}}
+          {{#hasSMZs}}
+            <p>
+              To reduce potential conflicts between uses and activities, Special Management Zones should not overlap with existing protected areas.  Adjacent protected areas may be a benefit to this zone and are displayed for planning purposes.  
+            </p>
+          {{/hasSMZs}}
+
+          <p>* = Overlap (%) calculates the proportion of the sub-regional total of the Existing Protected Area (marine portion) that falls within the boundary of this collection.</p>
         </td>
       </tr>
     </tfoot>
@@ -51,7 +61,7 @@
     <tbody>
         {{^hasClosures}}
           <tr>
-          <td colspan="3" style="text-align:center;">
+          <td colspan="5" style="text-align:center;">
             <p>No overlap with fisheries closures</p>
           </td>
         </tr>
@@ -68,13 +78,13 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="3" class="paragraph">
-          {{#smz}}
+        <td colspan="5" class="paragraph">
+          {{#hasSMZs}}
             Fisheries closures may need to be considered to reduce potential conflicts between uses and activities. Federal Rockfish Conservation Areas and Federal Sponge Reef Reserve are analysed for overlap with zones within this proposal. 
-          {{/smz}}
-          {{#pmz}}
+          {{/hasSMZs}}
+          {{#hasPMZs}}
             Considering existing fisheries closures can provide additional support for the location of protection management zones.
-          {{/pmz}}
+          {{/hasPMZs}}
           <p>* = Overlap (%) calculates the proportion of the sub-regional total of the fishery closures that fall within the boundary of the collection</p>
         </td>
       </tr>

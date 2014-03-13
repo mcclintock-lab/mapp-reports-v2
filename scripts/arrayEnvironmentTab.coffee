@@ -18,6 +18,15 @@ class ArrayEnvironmentTab extends ReportTab
     # setup context object with data and render the template from it
     importantAreas = @recordSet("OverlapWithImportantAreas", "OverlapWithImportantAreas").toArray()
     
+    hasPMZs = false
+    hasSMZs = false
+    for child in @children
+      for attr in child.getAttributes()
+        if attr.exportid is 'ZONE_TYPE'
+          if attr.value is 'pmz'
+            hasPMZs = true
+          else if attr.value is 'smz'
+            hasSMZs = true
     
     context =
       sketch: @model.forTemplate()
@@ -32,6 +41,8 @@ class ArrayEnvironmentTab extends ReportTab
 
       marxanAnalyses: _.map(@recordSet("MarxanAnalysis", "MarxanAnalysis")
         .toArray(), (f) -> f.NAME)
+      hasPMZs: hasPMZs
+      hasSMZs: hasSMZs
 
     @$el.html @template.render(context, templates)
     @enableTablePaging()
