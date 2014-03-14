@@ -28,51 +28,89 @@
     </tfoot>
   </table>
 </div>
-
 <div class="reportSection tableContainer">
   <h4>Habitat: Overlap with Important Areas, IBAs & Critical Habitat</h4>
-  <table data-paging="10" data-no-rows="Does not overlap any Important Marine Areas">
-    <thead>
-      <tr>
-        <th>Important Area/IBA/Critical Habitat</th>
-        <th>Overlap (km²)</th>
-        <th>Overlap (%)<sup>*</sup></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#importantAreas}}
-      <tr>
-        <td>{{NAME}}</td>
-        <td>{{CLPD_AREA}}</td>
-        <td>{{PERC_AREA}}</td>
-      </tr>
-      {{/importantAreas}}
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="3" class="paragraph">
-        {{#pmz}}
-          <p>
-            To reduce potential conflicts between human uses and marine species, consider these identified important areas for marine mammals, fish and marine birds.  Note that these areas do not include all of the foraging and breeding locations for marine species in the MaPP study area. 
-          </p>
-          <p>
-            Important Areas were identified during the process of establishing Ecologically and Biologically Significant Areas (EBSAs) by the <a href="http://pncima.org/site/atlas.html" target="_blank"> Pacific North Coast Integrated Management Area (PNCIMA)</a>. Important Bird Areas (IBAs) were also identified by Bird Studies Canada and Nature Canada, in partnership with BirdLife International.  Critical Habitat meets Canada's Species at Risk (SARA) requirements. See data layers for more information.  Data sources: up to 2009.
-          </p>
-        {{/pmz}}
-        {{#smz}}
-          <p>
-            To reduce potential conflicts between human uses and marine species, consider these Important Marine Areas for marine mammals, fish and birds.  These areas do not include all of the foraging and breeding locations for marine species in the MaPP study area. 
-          </p>
-          <p>
-            Important Areas were identified during the process of establishing Ecologically and Biologically Significant Areas (EBSAs) by the <a href="http://pncima.org/site/atlas.html" target="_blank"> Pacific North Coast Integrated Management Area (PNCIMA)</a>. Important Bird Areas (IBAs) were also identified by Bird Studies Canada and Nature Canada, in partnership with BirdLife International.  Critical Habitat meets Canada's Species at Risk (SARA) requirements. Potential critical is insufficient information to meet SARA requirements. See the PNCIMA atlas for more information. See data layers for more information.  Data sources: up to 2009.
+  {{#hasImportantAreas}}
+    <table>
+      <thead>
+        <tr>
+          <th width="250px"><strong>Important Area</strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#importantAreas}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/importantAreas}}
+      </tbody>
+    </table>
+  {{/hasImportantAreas}}
+  {{#hasMarineBirds}}
+    </br>
+    <table>
+      <thead>
+        <tr>
+          <th width="250px"><strong>Important Bird Areas (IBAs) <strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#marineBirds}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/marineBirds}}
+      </tbody>
+    </table>
+  {{/hasMarineBirds}}
+  {{#hasCriticalHabitat}}
+    </br>
+    <table>
+      <thead>
+        <tr>
+          <th width="250px"><strong>Critical Habitat</strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#criticalHabitat}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/criticalHabitat}}
+      </tbody>
+    </table>
+  {{/hasCriticalHabitat}}
+  <p>
+    {{#pmz}}
+      <p>
+        To reduce potential conflicts between human uses and marine species, consider these identified important areas for marine mammals, fish and marine birds.  Note that these areas do not include all of the foraging and breeding locations for marine species in the MaPP study area. 
+      </p>
+      <p>
+        Important Areas were identified during the process of establishing Ecologically and Biologically Significant Areas (EBSAs) by the <a href="http://pncima.org/site/atlas.html" target="_blank"> Pacific North Coast Integrated Management Area (PNCIMA)</a>. Important Bird Areas (IBAs) were also identified by Bird Studies Canada and Nature Canada, in partnership with BirdLife International.  Critical Habitat meets Canada's Species at Risk (SARA) requirements. See data layers for more information.  Data sources: up to 2009.
+      </p>
+    {{/pmz}}
+    {{#smz}}
+      <p>
+        To reduce potential conflicts between human uses and marine species, consider these Important Marine Areas for marine mammals, fish and birds.  These areas do not include all of the foraging and breeding locations for marine species in the MaPP study area. 
+      </p>
+      <p>
+        Important Areas were identified during the process of establishing Ecologically and Biologically Significant Areas (EBSAs) by the <a href="http://pncima.org/site/atlas.html" target="_blank"> Pacific North Coast Integrated Management Area (PNCIMA)</a>. Important Bird Areas (IBAs) were also identified by Bird Studies Canada and Nature Canada, in partnership with BirdLife International.  Critical Habitat meets Canada's Species at Risk (SARA) requirements. Potential critical is insufficient information to meet SARA requirements. See the PNCIMA atlas for more information. See data layers for more information.  Data sources: up to 2009.
           </p>
         {{/smz}}
         <p>* = Overlap (%) calculates the proportion of the sub-regional total of the habitat that falls within the boundary of this zone</p>
-        </td>
-      </tr>
-    </tfoot>
-
-  </table>
+    </p>
   <!-- <a href="#" data-toggle-node="51f5545c08dc4f5f2d216146" data-visible="false">show habitats layer</a> -->
 </div>
 

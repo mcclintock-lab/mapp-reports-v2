@@ -15,8 +15,7 @@ class ArrayEnvironmentTab extends ReportTab
   timeout: 600000
 
   render: () ->
-    # setup context object with data and render the template from it
-    importantAreas = @recordSet("OverlapWithImportantAreas", "OverlapWithImportantAreas").toArray()
+
     
     hasPMZs = false
     hasSMZs = false
@@ -27,7 +26,22 @@ class ArrayEnvironmentTab extends ReportTab
             hasPMZs = true
           else if attr.value is 'smz'
             hasSMZs = true
-    
+    try
+      importantAreas = @recordSet("OverlapWithImportantAreas", 
+          "ImportantAreas").toArray()
+      hasImportantAreas = importantAreas?.length > 0
+    catch error
+      hasImportantAreas = false
+    try
+      criticalHabitat = @recordSet("OverlapWithImportantAreas", 
+        "CriticalHabitat").toArray()
+      hasCriticalHabitat = criticalHabitat?.length > 0
+    catch error
+      hasCriticalHabitat = false
+    try
+      marineBirds = @recordSet("OverlapWithImportantAreas", 
+        "MarineBirds").toArray()
+      hasMarineBirds = marineBirds?.length > 0
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -36,6 +50,11 @@ class ArrayEnvironmentTab extends ReportTab
       nonFishBreedingAreas: @recordSet('OverlapWithNonFishBreedingAreas', 'OverlapWithNonFishBreedingAreas').toArray()
       habitats: @recordSet('OverlapWithBiogenicAndCommunityFormingSpecies', 'OverlapWithBiogenicAndCommunityFormingSpecies').toArray()
       importantAreas: importantAreas
+      hasImportantAreas: hasImportantAreas
+      criticalHabitat: criticalHabitat
+      hasCriticalHabitat: hasCriticalHabitat
+      marineBirds: marineBirds
+      hasMarineBirds: hasMarineBirds
 
       marineClassifications: @recordSet('OverlapWithMarineClassifications', 'OverlapWithMarineClassifications').toArray()
 
