@@ -42,7 +42,6 @@ class ArrayEnvironmentTab extends ReportTab
       marineBirds = @recordSet("OverlapWithImportantAreas", 
         "MarineBirds").toArray()
       hasMarineBirds = marineBirds?.length > 0
-
     try
       marineEcosections =  @recordSet('OverlapWithMarineClassifications', 'Ecoregions').toArray()
       hasMarineEcosections = marineEcosections?.length > 0
@@ -55,7 +54,7 @@ class ArrayEnvironmentTab extends ReportTab
       hasOceanographicRegions = false
     try
       benthicClasses =  @recordSet('OverlapWithMarineClassifications', 'BenthicClasses').toArray()
-      hasBenthicClasses = benthicClasses?.lenth > 0
+      hasBenthicClasses = benthicClasses?.length > 0
     catch error
       hasBenthicClasses = false
     try
@@ -63,6 +62,7 @@ class ArrayEnvironmentTab extends ReportTab
       hasHighTideAreas = highTideAreas?.length > 0
     catch error
       hasHighTideAreas = false
+
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()

@@ -50,7 +50,7 @@ class EnvironmentTab extends ReportTab
       hasOceanographicRegions = false
     try
       benthicClasses =  @recordSet('OverlapWithMarineClassifications', 'BenthicClasses').toArray()
-      hasBenthicClasses = benthicClasses?.lenth > 0
+      hasBenthicClasses = benthicClasses?.length > 0
     catch error
       hasBenthicClasses = false
     try
