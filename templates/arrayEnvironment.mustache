@@ -166,39 +166,101 @@
 </div>
 <div class="reportSection tableContainer">
   <h4>Habitat: Overlap with Marine Classifications and Oceanographic Regions</h4>
-  <table  data-paging="10" data-no-rows="Does not overlap any Marine Classifications or Oceanographic Regions">
-    <thead>
-      <tr>
-        <th>Classification/Region Type</th>
-        <th>Overlap (km²)</th>
-        <th>Overlap (%)<sup>*</sup></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#marineClassifications}}
-      <tr>
-        <td>{{HAB_NAME}}</td>
-        <td>{{CLPD_AREA}}</td>
-        <td>{{PERC_AREA}}</td>
-      </tr>
-      {{/marineClassifications}}
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="3" class="paragraph">
-          {{#hasPMZs}}
-            <p>
-              In Protection Management Zones, representation of habitat types is often one criteria for siting in a network.  Data in this report includes Ecosections, oceanographic regions, benthic classes and areas of high tidal current. 
-            </p>
-          {{/hasPMZs}}
-          {{#hasSMZs}}
-            <p>
-              The potential impact of activities on marine habitats is an important consideration when identifying locations for Special Management Zones.  This report calculates the overlap of the proposed SMZ(s) with Ecosections, oceanographic regions, benthic classes and areas of high tidal current.
-            </p>
-          {{/hasSMZs}}
-          <p>* = Overlap (%) calculates the proportion of the sub-regional total of the classification/region type that fall within the boundary of this collection</p>
-        </td>
-      </tr>
-    </tfoot>
-  </table>
+  {{#hasMarineEcosections}}
+    <table  data-paging="10" data-no-rows="Does not overlap any Marine Ecosections">
+      <thead>
+        <tr>
+          <th width="250px"><strong>Marine Ecosection</strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#marineEcosections}}
+        <tr>
+          <td>{{HAB_NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/marineEcosections}}
+      </tbody>
+    </table>
+  {{/hasMarineEcosections}}
+  {{#hasHighTideAreas}}
+    </br>
+    <table  data-no-rows="Does not overlap any High Tide Areas">
+      <thead>
+        <tr>
+          <th width="250px"><strong>High Tidal Current Area</strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#highTideAreas}}
+        <tr>
+          <td>{{HAB_NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/highTideAreas}}
+      </tbody>
+    </table>
+  {{/hasHighTideAreas}}
+  {{#hasOceanographicRegions}}
+    </br>
+    <table  data-paging="10" data-no-rows="Does not overlap any Oceanographic Regions">
+      <thead>
+        <tr>
+          <th width="250px"><strong>Oceanographic Region</strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#oceanographicRegions}}
+        <tr>
+          <td>{{HAB_NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/oceanographicRegions}}
+      </tbody>
+    </table
+  {{/hasOceanographicRegions}}
+  {{#hasBenthicClasses}}
+    </br>
+    <table  data-paging="10" data-no-rows="Does not overlap any Benthic Classes">
+      <thead>
+        <tr>
+          <th width="250px"><strong>Benthic Class</strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#benthicClasses}}
+        <tr>
+          <td>{{HAB_NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/benthicClasses}}
+      </tbody>
+    </table>
+  {{/hasBenthicClasses}}
+  <p>
+    {{#hasPMZs}}
+      <p>
+        In Protection Management Zones, representation of habitat types is often one criteria for siting in a network.  Data in this report includes Ecosections, oceanographic regions, benthic classes and areas of high tidal current. 
+      </p>
+    {{/hasPMZs}}
+    {{#hasSMZs}}
+      <p>
+        The potential impact of activities on marine habitats is an important consideration when identifying locations for Special Management Zones.  
+        This report calculates the overlap of the proposed SMZ(s) with Ecosections, oceanographic regions, benthic classes and areas of high tidal current.
+      </p>
+    {{/hasSMZs}}
+    <p>* = Overlap (%) calculates the proportion of the sub-regional total of the classification/region type that fall within the boundary of this zone</p>
+  </p>
 </div>

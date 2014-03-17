@@ -38,6 +38,26 @@ class EnvironmentTab extends ReportTab
     catch error
       hasMarineBirds = false
     # setup context object with data and render the template from it
+    try
+      marineEcosections =  @recordSet('OverlapWithMarineClassifications', 'Ecoregions').toArray()
+      hasMarineEcosections = marineEcosections?.length > 0
+    catch error
+      hasMarineEcosections = false
+    try
+      oceanographicRegions =  @recordSet('OverlapWithMarineClassifications', 'OceanographicAreas').toArray()
+      hasOceanographicRegions = oceanographicRegions?.length > 0
+    catch error
+      hasOceanographicRegions = false
+    try
+      benthicClasses =  @recordSet('OverlapWithMarineClassifications', 'BenthicClasses').toArray()
+      hasBenthicClasses = benthicClasses?.lenth > 0
+    catch error
+      hasBenthicClasses = false
+    try
+      highTideAreas = @recordSet('OverlapWithMarineClassifications', 'TidalAreas').toArray()
+      hasHighTideAreas = highTideAreas?.length > 0
+    catch error
+      hasHighTideAreas = false
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -54,7 +74,14 @@ class EnvironmentTab extends ReportTab
       marineBirds: marineBirds
       hasMarineBirds: hasMarineBirds
       
-      marineClassifications: @recordSet('OverlapWithMarineClassifications', 'OverlapWithMarineClassifications').toArray()
+      marineEcosections: marineEcosections
+      hasMarineEcosections: hasMarineEcosections
+      oceanographicRegions:oceanographicRegions
+      hasOceanographicRegions: hasOceanographicRegions
+      benthicClasses:benthicClasses
+      hasBenthicClasses: hasBenthicClasses
+      highTideAreas:highTideAreas
+      hasHighTideAreas: hasHighTideAreas
 
 
       marxanAnalyses: _.map(@recordSet("MarxanAnalysis", "MarxanAnalysis")
