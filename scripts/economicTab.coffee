@@ -9,6 +9,7 @@ class EconomicTab extends ReportTab
     'DistanceToInfrastructure'
     'DistanceToTransmissionLines'
     'DistanceToMarineProtectedAreas'
+    'OverlapWithFisheriesValues'
   ]
   timeout: 600000
 
@@ -16,7 +17,7 @@ class EconomicTab extends ReportTab
     zoneType = _.find @model.getAttributes(), (attr) -> 
       attr.exportid is 'ZONE_TYPE'
 
-
+    fisheries = @recordSet("OverlapWithFisheriesValues", "FisheriesValues").toArray()
 
     zoneType = zoneType?.value or 'smz'
     dist_to_tl = 0.0
@@ -60,6 +61,7 @@ class EconomicTab extends ReportTab
       nearestMPA: nearestMPA
       isRenewableEnergy: isRenewableEnergy
       isTourism: isTourism
+      fisheries: fisheries
 
     @$el.html @template.render(context, templates)
     @enableLayerTogglers()

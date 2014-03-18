@@ -1,3 +1,30 @@
+<div class="reportSection tableContainer">
+  <h4>Overlap With Fisheries <a href="#" data-toggle-node="51f308a208dc4f5f2d015757" data-visible="false">show fishery layers</a></h4>
+  <table  data-paging="10" data-no-rows="Does not overlap any Fisheries.">
+    <thead>
+      <tr>
+        <th>Fishery</th>
+        <th>Start Year</th>
+        <th>End Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#fisheries}}
+      <tr>
+        <td>{{FISH_NAME}}</td>
+        <td>{{START_YR}}</td>
+        <td>{{END_YR}}</td>
+      </tr>
+      {{/fisheries}}
+    </tbody>
+    <tfoot>
+      <tr>
+      <td colspan="2" class="paragraph">
+      </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
 {{^pmz}}
 {{#isRenewableEnergy}}
 <div class="reportSection">
@@ -42,12 +69,4 @@
   </p>
 </div>
 {{/isTourism}}
-{{/pmz}}
-{{#pmz}}
-<div class="reportSection">
-  <h4>No Reports</h4>
-  <p class="large">
-    No Human Well-Being reports for Protection Management Zones
-  </p>
-</div>
 {{/pmz}}

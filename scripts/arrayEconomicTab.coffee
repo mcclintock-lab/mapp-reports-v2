@@ -6,18 +6,20 @@ class ArrayEconomicTab extends ReportTab
   className: 'economic'
   template: templates.arrayEconomic
   dependencies: [
-
+    'OverlapWithFisheriesValues'
   ]
   timeout: 600000
 
   render: () ->
-    # setup context object with data and render the template from it
+    fisheries = @recordSet("OverlapWithFisheriesValues", "FisheriesValues").toArray()
+
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
       attributes: @model.getAttributes()
       admin: @project.isAdmin window.user
       array: true
+      fisheries: fisheries
     
     @$el.html @template.render(context, templates)
     @enableLayerTogglers()
