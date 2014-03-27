@@ -6,13 +6,19 @@ class ArrayEconomicTab extends ReportTab
   className: 'economic'
   template: templates.arrayEconomic
   dependencies: [
-    'OverlapWithFisheriesValues'
+    'OverlapWithFisheriesValues',
+    'InvestRecreationValue'
   ]
   timeout: 600000
 
   render: () ->
     fisheries = @recordSet("OverlapWithFisheriesValues", "FisheriesValues").toArray()
-
+    try
+      investAvgRecValue = @recordSet("InvestRecreationValue", "InvestRecreationValue").float('AVG_REC')
+      hasInvestRecValues = true
+    catch error
+      hasInvestRecValues = false
+      
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -20,6 +26,8 @@ class ArrayEconomicTab extends ReportTab
       admin: @project.isAdmin window.user
       array: true
       fisheries: fisheries
+      hasInvestRecValues: hasInvestRecValues
+      investAvgRecValue: investAvgRecValue
     
     @$el.html @template.render(context, templates)
     @enableLayerTogglers()

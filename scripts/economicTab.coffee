@@ -10,6 +10,7 @@ class EconomicTab extends ReportTab
     'DistanceToTransmissionLines'
     'DistanceToMarineProtectedAreas'
     'OverlapWithFisheriesValues'
+    'InvestRecreationValue'
   ]
   timeout: 600000
 
@@ -18,7 +19,7 @@ class EconomicTab extends ReportTab
       attr.exportid is 'ZONE_TYPE'
 
     fisheries = @recordSet("OverlapWithFisheriesValues", "FisheriesValues").toArray()
-
+    investAvgRecValue = @recordSet("InvestRecreationValue", "InvestRecreationValue").float('AVG_REC')
     zoneType = zoneType?.value or 'smz'
     dist_to_tl = 0.0
     dist_to_inf = []
@@ -62,6 +63,7 @@ class EconomicTab extends ReportTab
       isRenewableEnergy: isRenewableEnergy
       isTourism: isTourism
       fisheries: fisheries
+      investAvgRecValue: investAvgRecValue
 
     @$el.html @template.render(context, templates)
     @enableLayerTogglers()
