@@ -45,6 +45,7 @@ class EconomicTab extends ReportTab
         isTourism = true
 
 
+    console.log("!!!!!!!!!", investAvgRecValue)
     # setup context object with data and render the template from it
     context =
       sketch: @model.forTemplate()

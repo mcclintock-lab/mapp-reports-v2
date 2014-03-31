@@ -24,6 +24,15 @@
     </tfoot>
   </table>
 </div>
+<div class="reportSection">
+  <h4>Overlap with Recreation Visitation <a href="#" data-toggle-node="52a775e23c2042124b004fa4" data-visible="false">show inVEST layer</a></h4>
+  <p class="large">
+    This zone has an average recreational relative importance of <strong>{{investAvgRecValue}}.</strong> Values across the MaPP region range from 0 to 4.8, with higher numbers indicating greater recreation value.
+  </p>
+  <p> 
+    Recreation and tourism are important components of many national and local economies and they contribute in innumerable ways to physical wellbeing, learning, and quality of life. To quantify the value of natural environments, the InVEST recreation model predicts the spread of person-days of recreation. In the absence of empirical data on visitation, the InVEST model uses a proxy for visitation: geotagged photographs posted to the website flickr.  The InVEST tool computes the total annual days that a user took at least one photograph within each cell, then returns to users the average annual number of photo-user-days from 2005-2012
+  </p>
+</div>
 {{^pmz}}
 {{#isRenewableEnergy}}
 <div class="reportSection">
@@ -59,21 +68,13 @@
     </tfoot>
   </table>
 </div>
+
 {{#isTourism}}
 <div class="reportSection">
   <h4>Distance to Nearest Marine Protected Area</h4>
   <p class="large">
     This zone is <strong>{{distToMPAs}} km</strong> from the <strong>{{nearestMPA}}</strong>, the nearest protected area. Protected areas may have higher species diversity and may be
     important for siting commercial tourism zones. Data sources: Jan 2014
-  </p>
-</div>
-<div class="reportSection">
-  <h4>Overlap with Recreation Visitation <a href="#" data-toggle-node="52a775e23c2042124b004fa4" data-visible="false">show inVEST layer</a></h4>
-  <p class="large">
-    This zone has an average recreational relative importance of <strong>{{investAvgRecValue}}.</strong> Values across the MaPP region range from 0 to 4.8, with higher numbers indicating greater recreation value.
-  </p>
-  <p> 
-    Recreation and tourism are important components of many national and local economies and they contribute in innumerable ways to physical wellbeing, learning, and quality of life. To quantify the value of natural environments, the InVEST recreation model predicts the spread of person-days of recreation. In the absence of empirical data on visitation, the InVEST model uses a proxy for visitation: geotagged photographs posted to the website flickr.  The InVEST tool computes the total annual days that a user took at least one photograph within each cell, then returns to users the average annual number of photo-user-days from 2005-2012
   </p>
 </div>
 {{/isTourism}}
