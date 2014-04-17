@@ -98,57 +98,55 @@ class EnvironmentTab extends ReportTab
     @renderMarxanAnalysis()
 
   renderMarxanAnalysis: () =>
-    name = @$('.chosen').val()
-    records = @recordSet("MarxanAnalysis", "MarxanAnalysis").toArray()
-    quantile_range = {"Q0":"very low", "Q20": "low","Q40": "mid","Q60": "high","Q80": "very high"}
-    data = _.find records, (record) -> record.NAME is name
-    histo = data.HISTO.slice(1, data.HISTO.length - 1).split(/\s/)
-    histo = _.filter histo, (s) -> s.length > 0
-    histo = _.map histo, (val) ->
-      parseInt(val)
-    quantiles = _.filter(_.keys(data), (key) -> key.indexOf('Q') is 0)
-    for q, i in quantiles
-      if parseFloat(data[q]) > parseFloat(data.SCORE) or i is quantiles.length - 1
-        max_q = quantiles[i]
-        min_q = quantiles[i - 1] or "Q0" # quantiles[i]
-        quantile_desc = quantile_range[min_q]
-        break
-    @$('.scenarioResults').html """
-      The average Marxan score for this zone is <strong>#{data.SCORE}</strong>, placing it in 
-      the <strong>#{quantile_desc}</strong> quantile range <strong>(#{min_q.replace('Q', '')}% - #{max_q.replace('Q', '')}%)</strong> 
-      for this sub-region. All Marxan planning units for the sub-region have been ranked by sum solution 
-      score and divided into five quantiles of equal proportion.
-    """
-
-    @$('.scenarioDescription').html data.MARX_DESC
-
-    domain = _.map quantiles, (q) -> data[q]
-    domain.push 100
-    domain.unshift 0
-    color = d3.scale.linear()
-      .domain(domain)
-      .range(["#47ae43", "#6c0", "#ee0", "#eb4", "#ecbb89", "#eeaba0"].reverse())
-    quantiles = _.map quantiles, (key) ->
-      max = parseFloat(data[key])
-      min  = parseFloat(data[quantiles[_.indexOf(quantiles, key) - 1]] or 0)
-      {
-        range: "#{parseInt(key.replace('Q', '')) - 20}-#{key.replace('Q', '')}%"
-        name: key
-        start: min
-        end: max
-        bg: color((max + min) / 2)
-      }
     if window.d3
+      name = @$('.chosen').val()
+      records = @recordSet("MarxanAnalysis", "MarxanAnalysis").toArray()
+      quantile_range = {"Q0":"very low", "Q20": "low","Q40": "mid","Q60": "high","Q80": "very high"}
+      data = _.find records, (record) -> record.NAME is name
+      histo = data.HISTO.slice(1, data.HISTO.length - 1).split(/\s/)
+      histo = _.filter histo, (s) -> s.length > 0
+      histo = _.map histo, (val) ->
+        parseInt(val)
+      quantiles = _.filter(_.keys(data), (key) -> key.indexOf('Q') is 0)
+      for q, i in quantiles
+        if parseFloat(data[q]) > parseFloat(data.SCORE) or i is quantiles.length - 1
+          max_q = quantiles[i]
+          min_q = quantiles[i - 1] or "Q0" # quantiles[i]
+          quantile_desc = quantile_range[min_q]
+          break
+      @$('.scenarioResults').html """
+        The average Marxan score for this zone is <strong>#{data.SCORE}</strong>, placing it in 
+        the <strong>#{quantile_desc}</strong> quantile range <strong>(#{min_q.replace('Q', '')}% - #{max_q.replace('Q', '')}%)</strong> 
+        for this sub-region. All Marxan planning units for the sub-region have been ranked by sum solution 
+        score and divided into five quantiles of equal proportion.
+      """
+
+      @$('.scenarioDescription').html data.MARX_DESC
+
+      domain = _.map quantiles, (q) -> data[q]
+      domain.push 100
+      domain.unshift 0
+      color = d3.scale.linear()
+        .domain(domain)
+        .range(["#47ae43", "#6c0", "#ee0", "#eb4", "#ecbb89", "#eeaba0"].reverse())
+      quantiles = _.map quantiles, (key) ->
+        max = parseFloat(data[key])
+        min  = parseFloat(data[quantiles[_.indexOf(quantiles, key) - 1]] or 0)
+        {
+          range: "#{parseInt(key.replace('Q', '')) - 20}-#{key.replace('Q', '')}%"
+          name: key
+          start: min
+          end: max
+          bg: color((max + min) / 2)
+        }
+
       @$('.viz').html('')
       el = @$('.viz')[0]
       x = d3.scale.linear()
         .domain([0, 100])
         .range([0, 400])      
 
-
-
       # Histogram
-
       margin = 
         top: 5
         right: 20
