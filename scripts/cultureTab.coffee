@@ -7,7 +7,7 @@ class CultureTab extends ReportTab
   template: templates.culture
   dependencies: [
     "ExistingMarineProtectedAreas"
-    "Closures"
+    "FisheriesClosures"
     "OverlapWithExistingProvincialTenures"
     'TerrestrialProtectedAreas'
   ]
@@ -24,7 +24,7 @@ class CultureTab extends ReportTab
         "ExistingMarineProtectedAreas").toArray()
     hasProvincialTenures = provincial?.length > 0
     hasOverlapWithExistingMPAs = existingMPAs?.length > 0
-    closures = @recordSet("Closures", "FisheriesClosures").toArray()
+    closures = @recordSet("FisheriesClosures", "FisheriesClosures").toArray()
     hasClosures = closures?.length > 0
     adjAreas = @recordSet('TerrestrialProtectedAreas', 
         'TerrestrialProtectedAreas').toArray()

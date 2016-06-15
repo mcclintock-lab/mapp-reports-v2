@@ -7,7 +7,7 @@ class ArrayCultureTab extends ReportTab
   template: templates.arrayCulture
   dependencies: [
     "ExistingMarineProtectedAreas"
-    "Closures"
+    "FisheriesClosures"
     "OverlapWithExistingProvincialTenures"
   ]
   timeout: 600000
@@ -29,7 +29,7 @@ class ArrayCultureTab extends ReportTab
 
     hasProvincialTenures = provincial?.length > 0
     hasOverlapWithExistingMPAs = existingMPAs?.length > 0
-    closures = @recordSet("Closures", "FisheriesClosures").toArray()
+    closures = @recordSet("FisheriesClosures", "FisheriesClosures").toArray()
 
     hasClosures = closures?.length > 0
     context =

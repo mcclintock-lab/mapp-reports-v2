@@ -103,11 +103,14 @@ class EnvironmentTab extends ReportTab
       records = @recordSet("MarxanAnalysis", "MarxanAnalysis").toArray()
       quantile_range = {"Q0":"very low", "Q20": "low","Q40": "mid","Q60": "high","Q80": "very high"}
       data = _.find records, (record) -> record.NAME is name
+      
       histo = data.HISTO.slice(1, data.HISTO.length - 1).split(/\s/)
       histo = _.filter histo, (s) -> s.length > 0
       histo = _.map histo, (val) ->
         parseInt(val)
+      
       quantiles = _.filter(_.keys(data), (key) -> key.indexOf('Q') is 0)
+      
       for q, i in quantiles
         if parseFloat(data[q]) > parseFloat(data.SCORE) or i is quantiles.length - 1
           max_q = quantiles[i]
@@ -124,8 +127,10 @@ class EnvironmentTab extends ReportTab
       @$('.scenarioDescription').html data.MARX_DESC
 
       domain = _.map quantiles, (q) -> data[q]
+
       domain.push 100
       domain.unshift 0
+
       color = d3.scale.linear()
         .domain(domain)
         .range(["#47ae43", "#6c0", "#ee0", "#eb4", "#ecbb89", "#eeaba0"].reverse())
@@ -195,6 +200,7 @@ class EnvironmentTab extends ReportTab
         .style("text-anchor", "end")
         .text("Number of Planning Units")
 
+      console.log("histo------>>>>>", histo)
       svg.selectAll(".bar")
           .data(histo)
         .enter().append("rect")
@@ -225,10 +231,10 @@ class EnvironmentTab extends ReportTab
         .text((d) -> d)
 
       @$('.viz').append '<div class="legends"></div>'
-      for quantile in quantiles
-        @$('.viz .legends').append """
-          <div class="legend"><span style="background-color:#{quantile.bg};">&nbsp;</span>#{quantile.range}</div>
-        """
+      
+      @$('.viz .legends').append """
+        <div class="legend"><span style="background-color:#{quantile.bg};">&nbsp;</span>#{quantile.range}</div>
+      """
       @$('.viz').append '<br style="clear:both;">'
 
 module.exports = EnvironmentTab
