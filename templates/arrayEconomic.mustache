@@ -35,3 +35,56 @@
   </p>
 </div>
 {{/hasInvestRecValues}}
+{{#showFisheriesEffort}}
+  <div class="reportSection tableContainer">
+    <h4>Fisheries </h4>
+    <p class="in-report-header">Catch (kg)</p>
+    <table data-paging="10">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Total</th>
+          <th>% of Subregion</th>
+          <th>% of Region</th>
+          <th>% of Coast</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {{#fe_catch}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{TOT}}</td>
+          <td>{{SUB_TOT}}</td>
+          <td>{{REG_TOT}}</td>
+          <td>{{CST_TOT}}</td>
+        </tr>
+        {{/fe_catch}}
+      </tbody>
+    </table>
+
+    <p class="in-report-header">Effort (Soaktime)</p>
+    <table data-paging="10">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Total</th>
+          <th>% of Subregion</th>
+          <th>% of Region</th>
+          <th>% of Coast</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#fe_effort}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{TOT}}</td>
+          <td>{{SUB_TOT}}</td>
+          <td>{{REG_TOT}}</td>
+          <td>{{CST_TOT}}</td>
+        </tr>
+        {{/fe_effort}}
+      </tbody>
+    </table>
+  </div>
+{{/showFisheriesEffort}}

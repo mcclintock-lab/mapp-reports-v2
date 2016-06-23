@@ -63,4 +63,13 @@ class CultureTab extends ReportTab
     @enableLayerTogglers()
     @enableTablePaging()
 
+  roundEffortData: (rec_set) =>
+    low_total = 0.0
+    high_total = 0.0
+    for rs in rec_set
+      rs.TOT = Number(rs.TOT).toFixed(1)
+      rs.SUB_TOT = Number(rs.SUB_TOT).toFixed(1)
+      rs.REG_TOT = Number(rs.REG_TOT).toFixed(1)
+      rs.CST_TOT = Number(rs.CST_TOT).toFixed(1)
+
 module.exports = CultureTab

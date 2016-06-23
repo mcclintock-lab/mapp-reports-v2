@@ -11,6 +11,7 @@ class EconomicTab extends ReportTab
     'DistanceToMarineProtectedAreas'
     'OverlapWithFisheriesValues'
     'InvestRecreationValue'
+    'FisheriesEffort'
   ]
   timeout: 600000
 
@@ -44,8 +45,15 @@ class EconomicTab extends ReportTab
       if smzType.value[0] is 'Recreation & Tourism'
         isTourism = true
 
+    fe_catch = @recordSet("FisheriesEffort", "Catch").toArray()
+    @roundEffortData fe_catch
+    fe_effort =  @recordSet("FisheriesEffort", "Effort").toArray()
+    @roundEffortData fe_effort
 
-    console.log("!!!!!!!!!", investAvgRecValue)
+
+    showFisheriesEffort = @canShowFisheries()
+    console.log("can show fisheries: ", showFisheriesEffort)
+
     # setup context object with data and render the template from it
     context =
       sketch: @model.forTemplate()
@@ -65,9 +73,41 @@ class EconomicTab extends ReportTab
       isTourism: isTourism
       fisheries: fisheries
       investAvgRecValue: investAvgRecValue
+      fe_catch:fe_catch
+      fe_effort:fe_effort
+      showFisheriesEffort:showFisheriesEffort
 
     @$el.html @template.render(context, templates)
     @enableLayerTogglers()
     @enableTablePaging()
 
+  canShowFisheries: () =>
+    group_ids = window.app.state.get('user').getGroups(window.app.state.get('project'))
+    groups = _.map group_ids,  (id) -> return window.app.groups.get(id).get('name')
+    privileged = ["SeaSketch Staff", "MaPP Portal Admin"]
+    for group in groups
+      name = group.trim()
+      if name in privileged
+        return true
+    return false
+        
+  roundEffortData: (rec_set) =>
+    low_total = 0.0
+    high_total = 0.0
+    for rs in rec_set
+      rs.TOT = Number(rs.TOT).toFixed(1)
+      rs.SUB_TOT = @getNum(rs.SUB_TOT)
+      rs.REG_TOT = @getNum(rs.REG_TOT)
+      rs.CST_TOT = @getNum(rs.CST_TOT)
+
+  getNum: (val) =>
+    try
+      if val < 0.1
+        return "< 0.1"
+      else
+        return Number(val).toFixed(1)
+    catch e
+      return 0.0
+    
+    
 module.exports = EconomicTab
