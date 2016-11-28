@@ -10,20 +10,20 @@ class ArrayOverviewTab extends ReportTab
   className: 'overview'
   template: templates.arrayOverview
   dependencies: [
-    'ZoneSize'
+    'MappSize'
   ]
   timeout: 600000
 
   render: () ->
-    sc_name = @recordSet('ZoneSize', 'ZoneSize').raw('SC_NAME')
+    sc_name = @recordSet('MappSize', 'ZoneSize').raw('SC_NAME')
     sc_name = sc_name.replace /Zone/, "marine plan area"
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
       attributes: @model.getAttributes()
       admin: @project.isAdmin window.user
-      size: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
-      percent: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_PERC', 1)
+      size: @recordSet('MappSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
+      percent: @recordSet('MappSize', 'ZoneSize').float('SIZE_PERC', 1)
       
       sc_name: sc_name
       numChildren: @children.length

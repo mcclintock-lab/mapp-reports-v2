@@ -10,7 +10,7 @@ class OverviewTab extends ReportTab
   className: 'overview'
   template: templates.overview
   dependencies: [
-    'ZoneSize'
+    'MappSize'
   ]
   timeout: 600000
 
@@ -19,7 +19,7 @@ class OverviewTab extends ReportTab
       attr.exportid is 'ZONE_TYPE'
     zoneType = zoneType?.value or 'smz'
 
-    sketchclass_name = @recordSet('ZoneSize', 'ZoneSize').raw('SC_NAME')
+    sketchclass_name = @recordSet('MappSize', 'ZoneSize').raw('SC_NAME')
     sketchclass_name = sketchclass_name.replace /Zone/, "marine plan area"
 
     context =
@@ -28,8 +28,8 @@ class OverviewTab extends ReportTab
       attributes: @model.getAttributes()
       anyAttributes: @model.getAttributes()?.length > 0
       admin: @project.isAdmin window.user
-      size: @recordSet('ZoneSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
-      percent: @recordSet('ZoneSize', 'ZoneSize').raw('SIZE_PERC')
+      size: @recordSet('MappSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
+      percent: @recordSet('MappSize', 'ZoneSize').raw('SIZE_PERC')
       sc_name: sketchclass_name
 
 
