@@ -57,6 +57,7 @@
       </tbody>
     </table>
   {{/hasImportantAreas}}
+  
   {{#hasMarineBirds}}
     </br>
     <table>
@@ -99,6 +100,50 @@
       </tbody>
     </table>
   {{/hasCriticalHabitat}}
+
+  {{#hasEBSAs}}
+    </br>
+    <table>
+      <thead>
+        <tr>
+          <th width="250px"><strong>Economically and Biologically Significant Areas </strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#ebsas}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/ebsas}}
+      </tbody>
+    </table>
+  {{/hasEBSAs}}
+  {{#hasBiobands}}
+    </br>
+    <table>
+      <thead>
+        <tr>
+          <th width="250px"><strong>Giant Kelp, Bull Kelp, Eelgrass</strong></th>
+          <th>Overlap (km)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#biobands}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/biobands}}
+      </tbody>
+    </table>
+  {{/hasBiobands}}
+
   <p>
     {{#hasPMZs}}
       <p>

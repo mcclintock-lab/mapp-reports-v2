@@ -38,10 +38,28 @@ class ArrayEnvironmentTab extends ReportTab
       hasCriticalHabitat = criticalHabitat?.length > 0
     catch error
       hasCriticalHabitat = false
+    
     try
       marineBirds = @recordSet("OverlapWithImportantAreas", 
         "MarineBirds").toArray()
       hasMarineBirds = marineBirds?.length > 0
+    catch error
+      hasMarineBirds = false
+
+    try
+      ebsas = @recordSet("OverlapWithImportantAreas", 
+        "EBSA").toArray()
+      hasEBSAs = ebsas?.length > 0
+    catch error
+      hasEBSAs = false
+
+    try
+      biobands = @recordSet("OverlapWithImportantAreas", 
+        "Biobands").toArray()
+      hasBiobands = biobands?.length > 0
+    catch error
+      hasBiobands = false
+
     try
       marineEcosections =  @recordSet('OverlapWithMarineClassifications', 'Ecoregions').toArray()
       hasMarineEcosections = marineEcosections?.length > 0
@@ -76,6 +94,11 @@ class ArrayEnvironmentTab extends ReportTab
       hasCriticalHabitat: hasCriticalHabitat
       marineBirds: marineBirds
       hasMarineBirds: hasMarineBirds
+
+      ebsas: ebsas
+      hasEBSAs: hasEBSAs
+      biobands: biobands
+      hasBiobands: hasBiobands
 
       marineEcosections: marineEcosections
       hasMarineEcosections: hasMarineEcosections

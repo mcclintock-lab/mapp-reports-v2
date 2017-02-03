@@ -37,6 +37,20 @@ class EnvironmentTab extends ReportTab
       hasMarineBirds = marineBirds?.length > 0
     catch error
       hasMarineBirds = false
+
+    try
+      ebsas = @recordSet("OverlapWithImportantAreas", 
+        "EBSA").toArray()
+      hasEBSAs = ebsas?.length > 0
+    catch error
+      hasEBSAs = false
+
+    try
+      biobands = @recordSet("OverlapWithImportantAreas", 
+        "Biobands").toArray()
+      hasBiobands = biobands?.length > 0
+    catch error
+      hasBiobands = false
     # setup context object with data and render the template from it
     try
       marineEcosections =  @recordSet('OverlapWithMarineClassifications', 'Ecoregions').toArray()
@@ -73,6 +87,11 @@ class EnvironmentTab extends ReportTab
       hasCriticalHabitat: hasCriticalHabitat
       marineBirds: marineBirds
       hasMarineBirds: hasMarineBirds
+      
+      ebsas: ebsas
+      hasEBSAs: hasEBSAs
+      biobands: biobands
+      hasBiobands: hasBiobands
       
       marineEcosections: marineEcosections
       hasMarineEcosections: hasMarineEcosections
