@@ -11,12 +11,24 @@ class ArrayOverviewTab extends ReportTab
   template: templates.arrayOverview
   dependencies: [
     'MappSize'
+    'ShorelineLengthToolbox'
   ]
   timeout: 600000
 
   render: () ->
     sc_name = @recordSet('MappSize', 'ZoneSize').raw('SC_NAME')
     sc_name = sc_name.replace /Zone/, "marine plan area"
+    coastlineLength = @recordSet('ShorelineLengthToolbox', 'ShorelineLength').toArray()
+    coastlineTotal = 0
+
+    if coastlineLength?.length > 0
+      for rc in coastlineLength
+        coast = Number(rc.COAST)
+        coastlineTotal += coast
+    else
+      coastlineTotal = 0
+
+    coastlineTotal = coastlineTotal.toFixed(1)
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -24,7 +36,7 @@ class ArrayOverviewTab extends ReportTab
       admin: @project.isAdmin window.user
       size: @recordSet('MappSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
       percent: @recordSet('MappSize', 'ZoneSize').float('SIZE_PERC', 1)
-      
+      coastlineTotal: coastlineTotal
       sc_name: sc_name
       numChildren: @children.length
 

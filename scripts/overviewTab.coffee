@@ -11,6 +11,7 @@ class OverviewTab extends ReportTab
   template: templates.overview
   dependencies: [
     'MappSize'
+    'ShorelineLengthToolbox'
   ]
   timeout: 600000
 
@@ -19,8 +20,15 @@ class OverviewTab extends ReportTab
       attr.exportid is 'ZONE_TYPE'
     zoneType = zoneType?.value or 'smz'
 
+    coastlineLength = @recordSet('ShorelineLengthToolbox', 'ShorelineLength').toArray()
+    console.log(">>>", coastlineLength)
     sketchclass_name = @recordSet('MappSize', 'ZoneSize').raw('SC_NAME')
     sketchclass_name = sketchclass_name.replace /Zone/, "marine plan area"
+    if coastlineLength?.length > 0
+      coastlineLength = Number(coastlineLength[0].COAST).toFixed(1)
+    else
+      coastlineLength = 0
+
 
     context =
       sketch: @model.forTemplate()
@@ -30,6 +38,7 @@ class OverviewTab extends ReportTab
       admin: @project.isAdmin window.user
       size: @recordSet('MappSize', 'ZoneSize').float('SIZE_SQ_KM', 2)
       percent: @recordSet('MappSize', 'ZoneSize').raw('SIZE_PERC')
+      coastlineLength: coastlineLength
       sc_name: sketchclass_name
 
 
