@@ -12,6 +12,25 @@
   </p>
 </div>
 
+<div class="reportSection tableContainer">
+  <h4>Average Depth</h4>
+  <table data-paging="10">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Average Depth (m)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#avgDepth}}
+      <tr>
+        <td>{{NAME}}</td>
+        <td>{{AVG_DEPTH}}</td>
+      </tr>
+      {{/avgDepth}}
+    </tbody>
+  </table>
+</div>
 <!-- {{#adjacentProtectedArea}}
 <div class="reportSection">
   <h4>Nearby Areas</h4>

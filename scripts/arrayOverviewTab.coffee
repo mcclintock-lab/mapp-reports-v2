@@ -1,6 +1,7 @@
 ReportTab = require 'reportTab'
 templates = require '../templates/templates.js'
 _partials = require '../node_modules/seasketch-reporting-api/templates/templates.js'
+
 partials = []
 for key, val of _partials
   partials[key.replace('node_modules/seasketch-reporting-api/', '')] = val
@@ -12,6 +13,7 @@ class ArrayOverviewTab extends ReportTab
   dependencies: [
     'MappSize'
     'ShorelineLengthToolbox'
+    'AverageDepthToolbox'
   ]
   timeout: 600000
 
@@ -29,6 +31,10 @@ class ArrayOverviewTab extends ReportTab
       coastlineTotal = 0
 
     coastlineTotal = coastlineTotal.toFixed(1)
+    avgDepth = @recordSet('AverageDepthToolbox', 'AverageDepth').toArray()
+    for d in avgDepth
+      d.AVG_DEPTH = Number(Math.abs(parseFloat(d.AVG_DEPTH))).toFixed(0)
+    
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -38,6 +44,8 @@ class ArrayOverviewTab extends ReportTab
       percent: @recordSet('MappSize', 'ZoneSize').float('SIZE_PERC', 1)
       coastlineTotal: coastlineTotal
       sc_name: sc_name
+
+      avgDepth: avgDepth
       numChildren: @children.length
 
     @$el.html @template.render(context, partials)

@@ -12,6 +12,7 @@ class OverviewTab extends ReportTab
   dependencies: [
     'MappSize'
     'ShorelineLengthToolbox'
+    'AverageDepthToolbox'
   ]
   timeout: 600000
 
@@ -30,6 +31,12 @@ class OverviewTab extends ReportTab
       coastlineLength = 0
 
 
+    aveDepth = @recordSet('AverageDepthToolbox', 'AverageDepth').toArray()
+    if aveDepth?.length > 0
+      avgDepth = Number(Math.abs(parseFloat(aveDepth[0].AVG_DEPTH))).toFixed(0)
+    else
+      avgDepth = 0
+
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -41,6 +48,7 @@ class OverviewTab extends ReportTab
       coastlineLength: coastlineLength
       sc_name: sketchclass_name
 
+      avgDepth: avgDepth
 
       smz: zoneType is 'smz'
       pmz: zoneType is 'pmz'
