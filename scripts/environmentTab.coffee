@@ -11,6 +11,7 @@ class EnvironmentTab extends ReportTab
     'OverlapWithNonFishBreedingAreas'
     'OverlapWithMarineClassifications'
     'MarxanAnalysis'
+    'OverlapWithImportantAreas2017'
   ]
   timeout: 600000
 
@@ -39,18 +40,39 @@ class EnvironmentTab extends ReportTab
       hasMarineBirds = false
 
     try
-      ebsas = @recordSet("OverlapWithImportantAreas", 
-        "EBSA").toArray()
-      hasEBSAs = ebsas?.length > 0
+      importantAreas2017 = @recordSet("OverlapWithImportantAreas2017", 
+          "ImportantAreas").toArray()
+      hasImportantAreas2017 = importantAreas2017?.length > 0
     catch error
-      hasEBSAs = false
+      hasImportantAreas2017 = false
+    
+    try
+      criticalHabitat2017 = @recordSet("OverlapWithImportantAreas2017", 
+        "CriticalHabitat").toArray()
+      hasCriticalHabitat2017 = criticalHabitat2017?.length > 0
+    catch error
+      hasCriticalHabitat2017 = false
+    try
+      marineBirds2017 = @recordSet("OverlapWithImportantAreas2017", 
+        "MarineBirds").toArray()
+      hasMarineBirds2017 = marineBirds2017?.length > 0
+    catch error
+      hasMarineBirds2017 = false
 
     try
-      biobands = @recordSet("OverlapWithImportantAreas", 
-        "Biobands").toArray()
-      hasBiobands = biobands?.length > 0
+      ebsas2017 = @recordSet("OverlapWithImportantAreas2017", 
+        "EBSA").toArray()
+      hasEBSAs2017 = ebsas2017?.length > 0
     catch error
-      hasBiobands = false
+      hasEBSAs2017 = false
+
+    try
+      biobands2017 = @recordSet("OverlapWithImportantAreas2017", 
+        "Biobands").toArray()
+      hasBiobands2017 = biobands2017?.length > 0
+    catch error
+      hasBiobands2017 = false
+
     # setup context object with data and render the template from it
     try
       marineEcosections =  @recordSet('OverlapWithMarineClassifications', 'Ecoregions').toArray()
@@ -81,17 +103,24 @@ class EnvironmentTab extends ReportTab
       
       nonFishBreedingAreas: @recordSet('OverlapWithNonFishBreedingAreas', 'OverlapWithNonFishBreedingAreas').toArray()
       habitats: @recordSet('OverlapWithBiogenicAndCommunityFormingSpecies', 'OverlapWithBiogenicAndCommunityFormingSpecies').toArray()
+      
       importantAreas: importantAreas
       hasImportantAreas: hasImportantAreas
       criticalHabitat: criticalHabitat
       hasCriticalHabitat: hasCriticalHabitat
       marineBirds: marineBirds
       hasMarineBirds: hasMarineBirds
-      
-      ebsas: ebsas
-      hasEBSAs: hasEBSAs
-      biobands: biobands
-      hasBiobands: hasBiobands
+
+      importantAreas2017: importantAreas2017
+      hasImportantAreas2017: hasImportantAreas2017
+      criticalHabitat2017: criticalHabitat2017
+      hasCriticalHabitat2017: hasCriticalHabitat2017
+      marineBirds2017: marineBirds2017
+      hasMarineBirds2017: hasMarineBirds2017
+      ebsas2017: ebsas2017
+      hasEBSAs2017: hasEBSAs2017
+      biobands2017: biobands2017
+      hasBiobands2017: hasBiobands2017
       
       marineEcosections: marineEcosections
       hasMarineEcosections: hasMarineEcosections

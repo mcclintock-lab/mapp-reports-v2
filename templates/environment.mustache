@@ -92,48 +92,6 @@
       </tbody>
     </table>
   {{/hasCriticalHabitat}}
-  {{#hasEBSAs}}
-    </br>
-    <table>
-      <thead>
-        <tr>
-          <th width="250px"><strong>Economically and Biologically Significant Areas </strong></th>
-          <th>Overlap (km²)</th>
-          <th>Overlap (%)<sup>*</sup></th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#ebsas}}
-        <tr>
-          <td>{{NAME}}</td>
-          <td>{{CLPD_AREA}}</td>
-          <td>{{PERC_AREA}}</td>
-        </tr>
-        {{/ebsas}}
-      </tbody>
-    </table>
-  {{/hasEBSAs}}
-  {{#hasBiobands}}
-    </br>
-    <table>
-      <thead>
-        <tr>
-          <th width="250px"><strong>Giant Kelp, Bull Kelp, Eelgrass</strong></th>
-          <th>Overlap (km)</th>
-          <th>Overlap (%)<sup>*</sup></th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#biobands}}
-        <tr>
-          <td>{{NAME}}</td>
-          <td>{{CLPD_AREA}}</td>
-          <td>{{PERC_AREA}}</td>
-        </tr>
-        {{/biobands}}
-      </tbody>
-    </table>
-  {{/hasBiobands}}
   <p>
     {{#pmz}}
       <p>
@@ -153,7 +111,133 @@
         {{/smz}}
         <p>* = Overlap (%) calculates the proportion of the sub-regional total of the habitat that falls within the boundary of this zone</p>
     </p>
-  <!-- <a href="#" data-toggle-node="51f5545c08dc4f5f2d216146" data-visible="false">show habitats layer</a> -->
+</div>
+
+<div class="reportSection tableContainer">
+  <h4>Habitat: Updated overlap with Important Areas, EBSAs, IBAs & Critical Habitat</h4>
+  {{#hasImportantAreas2017}}
+    <table>
+      <thead>
+        <tr>
+          <th width="250px"><strong>Important Area</strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#importantAreas2017}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/importantAreas2017}}
+      </tbody>
+    </table>
+  {{/hasImportantAreas2017}}
+  {{#hasMarineBirds2017}}
+    </br>
+    <table>
+      <thead>
+        <tr>
+          <th width="250px"><strong>Important Bird Areas (IBAs) <strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#marineBirds2017}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/marineBirds2017}}
+      </tbody>
+    </table>
+  {{/hasMarineBirds2017}}
+  {{#hasCriticalHabitat2017}}
+    </br>
+    <table>
+      <thead>
+        <tr>
+          <th width="250px"><strong>Critical Habitat</strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#criticalHabitat2017}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/criticalHabitat2017}}
+      </tbody>
+    </table>
+  {{/hasCriticalHabitat2017}}
+  {{#hasEBSAs2017}}
+    </br>
+    <table>
+      <thead>
+        <tr>
+          <th width="250px"><strong>Economically and Biologically Significant Areas </strong></th>
+          <th>Overlap (km²)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#ebsas2017}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/ebsas2017}}
+      </tbody>
+    </table>
+  {{/hasEBSAs2017}}
+  {{#hasBiobands2017}}
+    </br>
+    <table>
+      <thead>
+        <tr>
+          <th width="250px"><strong>Giant Kelp, Bull Kelp, Eelgrass</strong></th>
+          <th>Overlap (km)</th>
+          <th>Overlap (%)<sup>*</sup></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#biobands2017}}
+        <tr>
+          <td>{{NAME}}</td>
+          <td>{{CLPD_AREA}}</td>
+          <td>{{PERC_AREA}}</td>
+        </tr>
+        {{/biobands2017}}
+      </tbody>
+    </table>
+  {{/hasBiobands2017}}
+  <p>
+    {{#pmz}}
+      <p>
+        To reduce potential conflicts between human uses and marine species, consider these identified important areas for marine mammals, fish and marine birds.  Note that these areas do not include all of the foraging and breeding locations for marine species in the MaPP study area. 
+      </p>
+      <p>
+        Important Areas were identified during the process of establishing Ecologically and Biologically Significant Areas (EBSAs) by the <a href="http://pncima.org/site/atlas.html" target="_blank"> Pacific North Coast Integrated Management Area (PNCIMA)</a>. Important Bird Areas (IBAs) were also identified by Bird Studies Canada and Nature Canada, in partnership with BirdLife International.  Critical Habitat meets Canada's Species at Risk (SARA) requirements. See data layers for more information.  Data sources: up to 2009.
+      </p>
+    {{/pmz}}
+    {{#smz}}
+      <p>
+        To reduce potential conflicts between human uses and marine species, consider these Important Marine Areas for marine mammals, fish and birds.  These areas do not include all of the foraging and breeding locations for marine species in the MaPP study area. 
+      </p>
+      <p>
+        Important Areas were identified during the process of establishing Ecologically and Biologically Significant Areas (EBSAs) by the <a href="http://pncima.org/site/atlas.html" target="_blank"> Pacific North Coast Integrated Management Area (PNCIMA)</a>. Important Bird Areas (IBAs) were also identified by Bird Studies Canada and Nature Canada, in partnership with BirdLife International.  Critical Habitat meets Canada's Species at Risk (SARA) requirements. Potential critical is insufficient information to meet SARA requirements. See the PNCIMA atlas for more information. See data layers for more information.  Data sources: up to 2009.
+          </p>
+        {{/smz}}
+        <p>* = Overlap (%) calculates the proportion of the sub-regional total of the habitat that falls within the boundary of this zone</p>
+    </p>
 </div>
 
 <div class="reportSection">
