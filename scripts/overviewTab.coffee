@@ -32,8 +32,12 @@ class OverviewTab extends ReportTab
 
 
     aveDepth = @recordSet('AverageDepthToolbox', 'AverageDepth').toArray()
+    minDepth = 0
+    maxDepth = 0
     if aveDepth?.length > 0
       avgDepth = Number(Math.abs(parseFloat(aveDepth[0].AVG_DEPTH))).toFixed(0)
+      minDepth = aveDepth[0].MIN_DEPTH
+      maxDepth = aveDepth[0].MAX_DEPTH
     else
       avgDepth = 0
 
@@ -49,7 +53,8 @@ class OverviewTab extends ReportTab
       sc_name: sketchclass_name
 
       avgDepth: avgDepth
-
+      minDepth: minDepth
+      maxDepth: maxDepth
       smz: zoneType is 'smz'
       pmz: zoneType is 'pmz'
 
