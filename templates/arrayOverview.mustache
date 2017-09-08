@@ -61,3 +61,24 @@
   </table>
 </div>
 {{/attributes}}
+
+<div class="reportSection tableContainer">
+  <h4>Sketch Name and Id</h4>
+    <table>
+      <thead>
+      <tr>
+        <th style="width:200px;">Sketch Name</th>
+        <th>Sketch ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#sketches}}
+      <tr>
+        <td>{{attributes.name}}</td>
+        <td>{{id}}</td>
+      </tr>
+      {{/sketches}}
+    </tbody>
+    </table>
+</div>
+

@@ -22,14 +22,13 @@ class OverviewTab extends ReportTab
     zoneType = zoneType?.value or 'smz'
 
     coastlineLength = @recordSet('ShorelineLengthToolbox', 'ShorelineLength').toArray()
-    console.log(">>>", coastlineLength)
+    
     sketchclass_name = @recordSet('MappSize', 'ZoneSize').raw('SC_NAME')
     sketchclass_name = sketchclass_name.replace /Zone/, "marine plan area"
     if coastlineLength?.length > 0
       coastlineLength = Number(coastlineLength[0].COAST).toFixed(1)
     else
       coastlineLength = 0
-
 
     aveDepth = @recordSet('AverageDepthToolbox', 'AverageDepth').toArray()
     minDepth = 0
@@ -41,6 +40,7 @@ class OverviewTab extends ReportTab
     else
       avgDepth = 0
 
+    sketch_name = @model.attributes.name
     context =
       sketch: @model.forTemplate()
       sketchClass: @sketchClass.forTemplate()
@@ -51,7 +51,7 @@ class OverviewTab extends ReportTab
       percent: @recordSet('MappSize', 'ZoneSize').raw('SIZE_PERC')
       coastlineLength: coastlineLength
       sc_name: sketchclass_name
-
+      sketch_name: sketch_name
       avgDepth: avgDepth
       minDepth: minDepth
       maxDepth: maxDepth

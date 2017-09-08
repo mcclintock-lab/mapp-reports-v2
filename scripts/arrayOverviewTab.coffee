@@ -23,6 +23,9 @@ class ArrayOverviewTab extends ReportTab
     coastlineLength = @recordSet('ShorelineLengthToolbox', 'ShorelineLength').toArray()
     coastlineTotal = 0
 
+    sketches = @model.getChildren()
+    
+
     if coastlineLength?.length > 0
       for rc in coastlineLength
         coast = Number(rc.COAST)
@@ -47,6 +50,7 @@ class ArrayOverviewTab extends ReportTab
 
       avgDepth: avgDepth
       numChildren: @children.length
+      sketches: sketches
 
     @$el.html @template.render(context, partials)
     @enableLayerTogglers()
